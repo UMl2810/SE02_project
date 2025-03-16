@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- main content -->
+    <div id="product-detail" class="container">
+        <div class="section-title">
+            <h2>Product Detail</h2>
+            <p>“Went for grocery, came back happy”</p>
+        </div>
+        <div class="d-flex flex-row justify-content-between">
+            <div id="carouselExampleIndicators" class="carousel slide gallery" data-bs-ride="true">
+                <div class="carousel-inner">
+                    <div class="carousel-item gallery-item active" style="height: 30em;">
+                        <a th:href="${product.image}" class="gallery-lightbox"
+                           data-gall="gallery-item">
+                            <img th:src="${product.image}" alt="..." class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- information -->
+            <div class="productinfor justify-content-between">
+                <div class="mb-5">
+                    <p th:text="${product.productName}"></p>
+                    <p th:text="'$' + ${product.price}"></p>
+                    <p>
+                        On sale: :
+                        <span th:if="${product.salePrice != null}">
+                        <b style="color: red;" th:text="'$' + ${product.salePrice}"></b>
+                    </span>
+                        <span th:unless="${product.salePrice != null}">
+                        <i style="color: #7F8487;">event comming soon...</i>
+                    </span>
+                    </p>
+                </div>
+                <form method="POST" th:action="@{/cart/add}">
+                    <input type="hidden" name="ProductId" th:value="${product.id}">
+                    <div th:if="${product.statusName} != 'outofstock'">
+                        <input type="number" id="quantity" name="Quantity" value="1" min="1" th:max="${product.quantity}" onkeydown="return false;" onpaste="return false;">
+                    </div>
+                    <div th:if="${product.statusName} == 'outofstock'">
+                        <input type="number" id="quantity" name="Quantity" value="0" min="0" readonly>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-outline-dark rounded-0 mt-4 w-75" name="addtocart">Add to
+                        cart
+                    </button>
+                </form>
+            </div>
+            <!-- end information -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

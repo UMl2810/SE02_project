@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div layout:fragment="content">
+    <div id="product">
+        <div class="lstype text-light d-flex flex-row">
+
+            <!-- Sidebar -->
+            <div class="lstproduct stickyelm mt-4">
+                <a href="#">Our Product</a>
+                <ul>
+                    <a href="#">
+                        <li data-type="viewall">View All</li>
+                    </a>
+                    <a href="#">
+                        <li data-type="ceiling">Ceiling Lights</li>
+                    </a>
+                    <a href="#">
+                        <li data-type="wall">Wall Lights</li>
+                    </a>
+                    <a href="#">
+                        <li data-type="lamp">Lamps</li>
+                    </a>
+                    <a href="#">
+                        <li data-type="outdoor">Outdoor Lights</li>
+                    </a>
+                    <a href="#">
+                        <li data-type="fan">Fans</li>
+                    </a>
+                    <a href="#">
+                        <li data-type="accents">Accents</li>
+                    </a>
+                </ul>
+            </div>
+            <!-- end nav bar -->
+
+            <!-- product -->
+            <div class="mainproduct">
+                <div class="d-flex flex-row mt-4 mb-5">
+                    <h6 class="font-weight-light" style="margin-left: 4%;">View All</h6>
+                </div>
+                <div class="d-flex flex-row mt-4 mb-5 stickyelm lstfilterbtn">
+                    <button type="button" class="bi bi-filter">FILTER</button>
+                    <button type="button" class="filterbt" data-type="bestseller">BEST SELLER</button>
+                    <button type="button" class="filterbt" data-type="sale">SALE</button>
+                    <button type="button" class="filterbt" data-type="viewall" style="background-color: black; color: white;">
+                        VIEW ALL
+                    </button>
+                </div>
+
+                <!-- shopping card -->
+                <div class="shopcard gallery">
+                    <form th:each="product : ${products}" class="card" th:classappend="${product.categoryName} + ' ' + ${product.statusName} + ' viewall'" th:action="@{/cart/add}" method="POST">
+                        <div th:id="${product.id}">
+                            <div class="card-img gallery-item" th:classappend="${product.statusName}">
+                                <a th:href="@{'/product/detail/' + ${product.id}}">
+                                    <img th:src="@{${product.image}}" class="card-img-top" alt="...">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-between">
+                                    <a th:href="@{'/product/detail/' + ${product.id}}" style="width: 86%;">
+                                        <p class="card-title" th:text="${product.productName}"></p>
+                                    </a>
+                                    <input type="hidden" name="productId" th:value="${product.id}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button th:if="${product.statusName != 'outofstock'}" type="submit" name="addtocart" class="bi bi-cart" title="Add to cart"></button>
+                                    <button th:if="${product.statusName == 'outofstock'}" class="bi bi-cart" title="Add to cart" disabled></button>
+                                </div>
+                                <p class="card-price">
+                                    $ <span th:text="${product.price}"></span>
+                                    <span class="card-sale-price" th:classappend="${product.statusName}" th:text="'Sale off to: $ ' + ${product.salePrice}"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--end shopping card -->
+            </div>
+            <!-- end product -->
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

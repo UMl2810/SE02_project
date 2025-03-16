@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_adminlayout">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="content-wrapper" style="margin-top: -430px;">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Add Product</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <form th:action="@{/product/add}" method="POST" enctype="multipart/form-data">
+          <div>
+            <label>Product name:</label>
+            <input class="form-control" type="text" name="productName">
+            <p th:if="${message?.containsKey('NullProductName')}" th:text="${message['NullProductName']}" style="color: red;"></p>
+          </div>
+          <div class="mb-3"></div>
+          <div>
+            <label>Quantity:</label>
+            <input class="form-control" type="number" name="quantity" min="1">
+            <p th:if="${message?.containsKey('NullQuantity')}" th:text="${message['NullQuantity']}" style="color: red;"></p>
+          </div>
+          <div class="mb-3"></div>
+          <div>
+            <label>Price:</label>
+            <input class="form-control" type="number" name="price" min="0">
+            <p th:if="${message?.containsKey('NullPrice')}" th:text="${message['NullPrice']}" style="color: red;"></p>
+          </div>
+          <div class="mb-3"></div>
+          <div>
+            <label>Status</label>
+            <select class="form-control" name="productStatusId">
+              <option th:each="status : ${productStatus}" th:value="${status.id}" th:text="${status.name}"></option>
+            </select>
+          </div>
+          <div class="mb-3"></div>
+          <div>
+            <label>Sale Price:</label>
+            <input class="form-control" type="number" name="saleprice" min="0">
+          </div>
+          <div class="mb-3"></div>
+          <div>
+            <label>Category</label>
+            <select class="form-control" name="categoryId">
+              <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.categoryName}"></option>
+            </select>
+          </div>
+          <div class="mb-3"></div>
+          <div>
+            <label>IMG</label>
+            <input class="form-control" type="file" name="image" id="imageInput">
+          </div>
+          <div class="mb-3"></div>
+          <div class="mb-3">
+            <img id="imagePreview" src="" alt="" style="width: 15rem;">
+          </div>
+          <div>
+            <label>Product Description:</label>
+            <textarea class="form-control" name="description" cols="30" rows="10"></textarea>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-success" name="apply">Apply</button>
+            <p th:if="${message?.containsKey('Success')}" th:text="${message['Success']}" style="color: green;"></p>
+          </div>
+        </form>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <script>
+    document.getElementById('imageInput').addEventListener('change', function(event) {
+      var reader = new FileReader();
+      reader.onload = function() {
+        var output = document.getElementById('imagePreview');
+        output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    });
+  </script>
+</div>
+</body>
+</html>

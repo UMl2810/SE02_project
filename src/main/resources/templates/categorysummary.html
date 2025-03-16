@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_dashboardlayout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="wrapper">
+        <div class="content-wrapper" style="margin-top: -660px;">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Dashboard</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <form th:action="@{/dashboard/topCategories}" method="GET">
+                            <div class="row">
+                                <div class="p-3 col">
+                                    <label class="form-label">Month:</label>
+                                    <select class="form-select form-select-lg w-50" aria-label=".form-select-lg example" name="month">
+                                        <option th:each="month : ${months}" th:value="${month.value}" th:text="${month.text}" th:selected="${month.value == currentMonth}"></option>
+                                    </select>
+                                </div>
+                                <div class="p-3 col">
+                                    <label class="form-label">Year:</label>
+                                    <select class="form-select form-select-lg w-50" aria-label=".form-select-lg example" name="year">
+                                        <option th:each="year : ${years}" th:value="${year.value}" th:text="${year.text}" th:selected="${year.value == currentYear}"></option>
+                                    </select>
+                                </div>
+                                <div class="p-3 col-2">
+                                    <button type="submit" class="btn btn-success w-50">View</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="chart">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // Get the canvas element
+        var canvas = document.getElementById('barChart');
+        var chartData = /*[[${values}]]*/ [];
+        var chartLabels = /*[[${labels}]]*/ [];
+
+        // Define your chart data
+        var chartData = {
+            labels: chartLabels,
+            datasets: [{
+                label: 'The amount of sold (products)', // Label for the dataset
+                data: chartData,
+                backgroundColor: '#5CB646' // Bar color
+            }]
+        };
+
+        // Create the chart
+        var chart = new Chart(canvas, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                indexAxis: 'y', // Rotate the chart to make it horizontal
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        /*]]>*/
+    </script>
+
+</section>
+</body>
+</html>

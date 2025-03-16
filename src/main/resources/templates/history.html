@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="_layout">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div layout:fragment="content">
+    <div id="historyorder">
+        <div class="d-flex flex-column align-items-center my-5">
+            <div class="section-title">
+                <h2>History Order</h2>
+            </div>
+            <div class="container">
+                <h3 th:text="'You have : ' + ${count} + ' ' + ${orderStatusName} + ' Order'"></h3>
+            </div>
+            <div class="container row">
+                <div class="col-2">
+                    <div class="stickyelm">
+                        <div class="row" th:each="status : ${orderStatus}">
+                            <div class="col-2">
+                                <i th:class="${status.bootstapicon}"></i>
+                            </div>
+                            <div class="col">
+                                <a th:href="@{'/order/history/' + ${status.id}}" th:text="${status.name}"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div th:each="order : ${history}">
+                        <div class="card mt-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p><b>OrderID: </b><i th:text="${order.id}"></i></p>
+                                </div>
+                                <div class="col-6">
+                                    <!-- Trigger the modal with a button -->
+                                    <button type="button" class="btn btn-outline-dark rounded-0"
+                                            th:data-bs-toggle="'modal'"
+                                            th:data-bs-target="'#detailModal' + ${order.id}">Detail
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" th:id="'detailModal' + ${order.id}" tabindex="-1" role="dialog"
+                             aria-labelledby="detailModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="detailModalLabel">Order Details</h5>
+                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div th:if="${statusId == 5}">
+                                        <div class="modal-body">
+                                            <div class="row text-center mb-1">
+                                                <div class="col-2 fw-bold">IMG</div>
+                                                <div class="col-4 fw-bold">PRODUCTNAME</div>
+                                                <div class="col-2 fw-bold">QUANTITY</div>
+                                                <div class="col-2 fw-bold">PRICE</div>
+                                                <div class="col-2">
+                                                    <form th:action="@{'/order/cancel'}" method="post">
+                                                        <input type="hidden" name="orderId" th:value="${order.id}">
+                                                        <button type="submit" class="btn btn-outline-dark rounded-0">
+                                                            CANCEL
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div th:each="product : ${order.listProduct}">
+                                                <div class="row text-center mb-1">
+                                                    <div class="col-2">
+                                                        <img th:src="${product.image}" style="width: 50px;">
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p th:text="${product.productName}"></p>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p th:text="${product.quantity}"></p>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p th:text="${product.price}"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div th:if="${statusId != 5}">
+                                        <div class="modal-body">
+                                            <div class="row text-center mb-1">
+                                                <div class="col fw-bold">IMG</div>
+                                                <div class="col fw-bold">PRODUCTNAME</div>
+                                                <div class="col fw-bold">QUANTITY</div>
+                                                <div class="col fw-bold">PRICE</div>
+                                            </div>
+                                            <div th:each="product : ${order.listProduct}">
+                                                <div class="row text-center mb-1">
+                                                    <div class="col">
+                                                        <img th:src="${product.image}" style="width: 50px;">
+                                                    </div>
+                                                    <div class="col">
+                                                        <p th:text="${product.productName}"></p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <p th:text="${product.quantity}"></p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <p th:text="${product.price}"></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chic_lighting</title>
+
+    <!-- Favicons -->
+    <link href="/img/favicon.png" rel="icon">
+    <link href="/img/favicon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="/vendor/animate.css/animate.min.css">
+    <link rel="stylesheet" href="/vendor/aos/aos.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-icon/bootstrap-icons.css">
+    <link rel="stylesheet" href="/vendor/boxicons/css/boxicons.min.css">
+    <link rel="stylesheet" href="/vendor/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="/vendor/swiper/swiper-bundle.min.css">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/main.css" rel="stylesheet">
+
+    <!-- CDN Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- CDN JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+<main id="main">
+    <div class="container">
+        <a href="index.html" class="d-flex justify-content-center logo me-lg-0 mt-3">
+            <img src="/img/favicon.png" alt="logo" class="img-fluid m-xl-1">
+        </a>
+
+        <form method="POST" action="register">
+        <div class="row d-flex flex-column justify-content-center align-items-center mt-3">
+            <h1 class="text-center">Register Form</h1>
+            <div class="mt-5"></div>
+            <div class="row mb-3">
+                <div class="col-6 form-floating">
+                    <input class="form-control rounded-0 login-input bg-white" type="text" placeholder="firstname" name="firstName" >
+                    <label>First Name:</label>
+                    <p th:if="${errorList?.containsKey('NullFirstname')}" style="color: red;" th:text="${errorList['NullFirstname']}"></p>
+                </div>
+                <div class="col-6 form-floating">
+                    <input class="form-control rounded-0 login-input bg-white" type="text" placeholder="lastname" name="lastName" >
+                    <label>Last Name:</label>
+                    <p th:if="${errorList?.containsKey('NullLastname')}" style="color: red;" th:text="${errorList['NullLastname']}"></p>
+                </div>
+            </div>
+            <div class="col-12 form-floating mb-3">
+                <input class="form-control rounded-0 login-input bg-white" type="text" placeholder="username" name="Username">
+                <label>Username:</label>
+                <p th:if="${errorList?.containsKey('NullUsername')}" style="color: red;" th:text="${errorList['NullUsername']}"></p>
+                <p th:if="${errorList?.containsKey('ExistUsername')}" style="color: red;" th:text="${errorList['ExistUsername']}"></p>
+            </div>
+            <div class="col-12 form-floating mb-3">
+                <input class="form-control rounded-0 login-input bg-white" type="email" placeholder="e-mail" name="Email" >
+                <label>E-Mail:</label>
+                <p th:if="${errorList?.containsKey('NullEmail')}" style="color: red;" th:text="${errorList['NullEmail']}"></p>
+                <p th:if="${errorList?.containsKey('InvalideEmail')}" style="color: red;" th:text="${errorList['InvalideEmail']}"></p>
+                <p th:if="${errorList?.containsKey('ExistEmail')}" style="color: red;" th:text="${errorList['ExistEmail']}"></p>
+            </div>
+            <div class="col-12 form-floating mb-3">
+                <input class="form-control rounded-0 login-input bg-white" type="text" placeholder="address" name="Address" >
+                <label>Address:</label>
+                <p th:if="${errorList?.containsKey('NullAddress')}" style="color: red;" th:text="${errorList['NullAddress']}"></p>
+            </div>
+            <div class="col-12 form-floating mb-3">
+                <input class="form-control rounded-0 login-input bg-white" type="password" placeholder="password" name="Password" >
+                <label>Password:</label>
+                <p th:if="${errorList?.containsKey('NullPassword')}" style="color: red;" th:text="${errorList['NullPassword']}"></p>
+            </div>
+            <div class="col-12 form-floating mb-5">
+                <input class="form-control rounded-0 login-input bg-white" type="password" placeholder="confirm-password" name="confirmPassword">
+                <label>Confirm Password:</label>
+                <p th:if="${errorList?.containsKey('NullConfirmPassword')}" style="color: red;" th:text="${errorList['NullConfirmPassword']}"></p>
+                <p th:if="${errorList?.containsKey('NotMatch')}" style="color: red;" th:text="${errorList['NotMatch']}"></p>
+            </div>
+
+            <div class="d-flex justify-content-between mb-5">
+                <button type="reset" class="btn btn-lg btn-black col-2">Reset</button>
+                <button type="submit" class="btn btn-lg btn-outline-dark col-4">Register</button>
+            </div>
+            <div class="text-center mb-3">
+                <p>
+                    <button type="button" class="btn btn-link" name="getbacksignin" onclick="window.location.href='login'"><i class="bi bi-arrow-up-left-circle"></i> Go back to Sign in page</button>
+                </p>
+            </div>
+        </div>
+        </form>
+    </div>
+</main><!-- End #main -->
+<!-- ======= Footer ======= -->
+<footer id="footer" class="mt-5">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-info">
+                        <h3>Chic & Lighting</h3>
+                        <p>
+                            Hanoi University, Nguyen Trai <br>
+                            Thanh Xuan, Hanoi, Vietnam.<br><br>
+                            <strong>Phone:</strong> +84 92 702 3447<br>
+                            <strong>Email:</strong> chicandlighting@gmail.com<br>
+                        </p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Team</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Team 7 - EPROJECT</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h4>Our Newsletter</h4>
+                    <p>Get exclusive discounts and design inspiration straight to your inbox. Subscribe now!</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Team-7 / E-PROJECT</span></strong>
+        </div>
+        <div class="credits">
+            Designed by <a href="#">Team 7</a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<div id="preloader"></div>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/vendor/aos/aos.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/vendor/masonry/masonry.pkgd.min.js"></script>
+
+<!-- Main JavaScript File -->
+<script src="/js/main.js"></script>
+</body>
