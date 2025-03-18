@@ -49,7 +49,7 @@ public class DatabaseInitializer {
     @Transactional
     public void initDatabase() {
         try {
-                if (roleRepository.count() == 0) {
+            if (roleRepository.count() == 0) {
                 Role adminRole = new Role();
                 adminRole.setName("Admin");
                 roleRepository.save(adminRole);
@@ -61,8 +61,10 @@ public class DatabaseInitializer {
 
             // Insert users if not present
             if (userRepository.count() == 0) {
-                Role adminRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("Admin")).findFirst().orElse(null);
-                Role userRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("User")).findFirst().orElse(null);
+                Role adminRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("Admin"))
+                        .findFirst().orElse(null);
+                Role userRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("User"))
+                        .findFirst().orElse(null);
 
                 User admin = new User();
                 admin.setUsername("admin");
@@ -88,7 +90,8 @@ public class DatabaseInitializer {
             if (categoryRepository.count() == 0) {
                 Category category1 = new Category();
                 category1.setCategoryName("ceiling");
-                category1.setDescription("Discover chic ceiling lights to elevate your space. Explore modern designs and timeless classics for a touch of elegance in any room.");
+                category1.setDescription(
+                        "Discover chic ceiling lights to elevate your space. Explore modern designs and timeless classics for a touch of elegance in any room.");
                 category1.setIsActive((byte) 1);
                 categoryRepository.save(category1);
                 categoryRepository.flush();
@@ -149,45 +152,66 @@ public class DatabaseInitializer {
             }
 
             // Insert products if not present
-            if (productRepository.count() < 52) {
+            if (productRepository.count() < 32) {
                 Map<String, Category> categories = categoryRepository.findAll().stream()
                         .collect(Collectors.toMap(Category::getCategoryName, category -> category));
 
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-                        {"BEAU POLISHED BRASS TABLE LAMP", "399.00", "lamp", "299.00","/img/productImg/accent.jpg"},
-                        {"BIANCA MARBLE TABLE LAMP", "459.00", "lamp", "349.00","/img/productImg/accent.jpg"},
-                        {"EXPOSIOR POLISHED BRASS AND WALNUT TABLE LAMP", "499.00", "lamp", "379.00","/img/productImg/accent.jpg"},
-                        {"GRAZIANO INDOOR/OUTDOOR TRAVERTINE WALL SCONCE", "289.00", "wall", "219.00","/img/productImg/accent.jpg"},
-                        {"RONDA INDOOR/OUTDOOR BLACK FLUSH MOUNT LIGHT", "199.00", "wall", "149.00","/img/productImg/accent.jpg"},
-                        {"RONDA INDOOR/OUTDOOR MATTE BLACK WALL SCONCE", "249.00", "wall", "189.00","/img/productImg/accent.jpg"},
-                        {"RONDA INDOOR/OUTDOOR POLISHED BRASS FLUSH MOUNT LIGHT", "279.00", "wall", "209.00","/img/productImg/accent.jpg"},
-                        {"5 BROWN WINGS FAN", "349.00", "fan", "299.00","/img/productImg/accent.jpg"},
-                        {"3 BROWN WINGS FAN", "299.00", "fan", "249.00","/img/productImg/accent.jpg"},
-                        {"BALL CANDLES SET OF 2", "39.00", "accents", "29.00","/img/productImg/accent.jpg"},
-                        {"BRIGHTON TAPERED POLISHED STAINLESS STEEL PENDANT LIGHT 2", "529.00", "ceiling", "419.00","/img/productImg/accent.jpg"},
-                        {"ALDUS IVORY AND POLISHED BRASS ARTICULATING WALL SCONCE", "359.00", "wall", "279.00","/img/productImg/accent.jpg"},
-                        {"EXPOSIOR INDOOR/OUTDOOR BLACK PENDANT LIGHT MODEL 017", "489.00", "ceiling", "379.00","/img/productImg/accent.jpg"},
-                        {"5 BLACK WINGS FAN", "369.00", "fan", "319.00","/img/productImg/accent.jpg"},
-                        {"3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00","/img/productImg/accent.jpg"},
-                        {"5 WHITE WINGS FAN", "379.00", "fan", "329.00","/img/productImg/accent.jpg"},
-                        {"BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00","/img/productImg/accent.jpg"},
-                        {"BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "accents", "79.00","/img/productImg/accent.jpg"},
-                        {"CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "accents", "69.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"FALCON METAL INCENSE BURNER", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
-                        {"ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "wall", "289.00","/img/productImg/accent.jpg"},
-                        {"5 BROWN LEAF WINGS FAN", "389.00", "fan", "339.00","/img/productImg/accent.jpg"},
-                        {"WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00","/img/productImg/accent.jpg"},
-                        {"CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
-                        {"BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "ceiling", "439.00","/img/productImg/accent.jpg"},
-                        {"CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"NEW CEILING LIGHT", "599.00", "ceiling", "479.00","/img/productImg/accent.jpg"},
-                        {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00","/img/productImg/accent.jpg"}
+                        { "BEAU POLISHED BRASS TABLE LAMP", "399.00", "lamp", "299.00", "/img/productImg/accent.jpg" },
+                        { "BIANCA MARBLE TABLE LAMP", "459.00", "lamp", "349.00", "/img/productImg/accent.jpg" },
+                        { "EXPOSIOR POLISHED BRASS AND WALNUT TABLE LAMP", "499.00", "lamp", "379.00",
+                                "/img/productImg/accent.jpg" },
+                        { "GRAZIANO INDOOR/OUTDOOR TRAVERTINE WALL SCONCE", "289.00", "wall", "219.00",
+                                "/img/productImg/accent.jpg" },
+                        { "RONDA INDOOR/OUTDOOR BLACK FLUSH MOUNT LIGHT", "199.00", "wall", "149.00",
+                                "/img/productImg/accent.jpg" },
+                        { "RONDA INDOOR/OUTDOOR MATTE BLACK WALL SCONCE", "249.00", "wall", "189.00",
+                                "/img/productImg/accent.jpg" },
+                        { "RONDA INDOOR/OUTDOOR POLISHED BRASS FLUSH MOUNT LIGHT", "279.00", "wall", "209.00",
+                                "/img/productImg/accent.jpg" },
+                        { "5 BROWN WINGS FAN", "349.00", "fan", "299.00", "/img/productImg/accent.jpg" },
+                        { "3 BROWN WINGS FAN", "299.00", "fan", "249.00", "/img/productImg/accent.jpg" },
+                        { "BALL CANDLES SET OF 2", "39.00", "accents", "29.00", "/img/productImg/accent.jpg" },
+                        { "BRIGHTON TAPERED POLISHED STAINLESS STEEL PENDANT LIGHT 2", "529.00", "ceiling", "419.00",
+                                "/img/productImg/accent.jpg" },
+                        { "ALDUS IVORY AND POLISHED BRASS ARTICULATING WALL SCONCE", "359.00", "wall", "279.00",
+                                "/img/productImg/accent.jpg" },
+                        { "EXPOSIOR INDOOR/OUTDOOR BLACK PENDANT LIGHT MODEL 017", "489.00", "ceiling", "379.00",
+                                "/img/productImg/accent.jpg" },
+                        { "5 BLACK WINGS FAN", "369.00", "fan", "319.00", "/img/productImg/accent.jpg" },
+                        { "3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00", "/img/productImg/accent.jpg" },
+                        { "5 WHITE WINGS FAN", "379.00", "fan", "329.00", "/img/productImg/accent.jpg" },
+                        { "BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00",
+                                "/img/productImg/accent.jpg" },
+                        { "BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "accents", "79.00",
+                                "/img/productImg/accent.jpg" },
+                        { "CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "accents", "69.00",
+                                "/img/productImg/accent.jpg" },
+                        { "DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "accents", "49.00",
+                                "/img/productImg/accent.jpg" },
+                        { "FALCON METAL INCENSE BURNER", "79.00", "accents", "59.00", "/img/productImg/accent.jpg" },
+                        { "ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "wall", "289.00",
+                                "/img/productImg/accent.jpg" },
+                        { "5 BROWN LEAF WINGS FAN", "389.00", "fan", "339.00", "/img/productImg/accent.jpg" },
+                        { "WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00",
+                                "/img/productImg/accent.jpg" },
+                        { "CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "accents", "59.00",
+                                "/img/productImg/accent.jpg" },
+                        { "DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00",
+                                "/img/productImg/accent.jpg" },
+                        { "MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "accents", "59.00",
+                                "/img/productImg/accent.jpg" },
+                        { "BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "ceiling", "439.00",
+                                "/img/productImg/accent.jpg" },
+                        { "CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "accents", "49.00",
+                                "/img/productImg/accent.jpg" },
+                        { "DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00",
+                                "/img/productImg/accent.jpg" },
+                        { "NEW CEILING LIGHT", "599.00", "ceiling", "479.00", "/img/productImg/accent.jpg" },
+                        { "ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00",
+                                "/img/productImg/accent.jpg" }
                 };
 
                 List<Product> newProducts = new ArrayList<>();
@@ -251,13 +275,18 @@ public class DatabaseInitializer {
                         createOrder(user1, statusMap.get("Accomplished"), "2024-04-08 03:15:23"),
                         createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-08 03:17:06"),
                         createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-08 03:18:23"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-12 06:04:34", "Giao gio hanh chinh"),
-                        createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-12 06:07:56", "Giao gio hanh chinh"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-13 09:37:24", "Giao gio hanh chinh"),
-                        createOrder(user2, statusMap.get("Canceled"), "2024-05-13 02:43:56", "Nguyen Duc", "Son", "Yen Phong"),
-                        createOrder(user2, statusMap.get("Wait for confirmation"), "2024-05-13 02:47:35", "Nguyen Duc", "Son", "Yen Phong"),
-                        createOrder(user1, statusMap.get("Canceled"), "2024-05-14 02:29:38", "Nguyen Duc", "Son", "Yen Phong")
-                );
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-12 06:04:34",
+                                "Giao gio hanh chinh"),
+                        createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-12 06:07:56",
+                                "Giao gio hanh chinh"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-13 09:37:24",
+                                "Giao gio hanh chinh"),
+                        createOrder(user2, statusMap.get("Canceled"), "2024-05-13 02:43:56", "Nguyen Duc", "Son",
+                                "Yen Phong"),
+                        createOrder(user2, statusMap.get("Wait for confirmation"), "2024-05-13 02:47:35", "Nguyen Duc",
+                                "Son", "Yen Phong"),
+                        createOrder(user1, statusMap.get("Canceled"), "2024-05-14 02:29:38", "Nguyen Duc", "Son",
+                                "Yen Phong"));
 
                 orderRepository.saveAll(orders);
             }
@@ -288,8 +317,10 @@ public class DatabaseInitializer {
                 Order order11 = orderRepository.findById(11L).orElse(null);
                 Order order12 = orderRepository.findById(12L).orElse(null);
 
-                Payment cod = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("COD")).findFirst().orElse(null);
-                Payment payAtShop = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("Pay at shop")).findFirst().orElse(null);
+                Payment cod = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("COD"))
+                        .findFirst().orElse(null);
+                Payment payAtShop = paymentRepository.findAll().stream()
+                        .filter(payment -> payment.getName().equals("Pay at shop")).findFirst().orElse(null);
 
                 Transaction transaction1 = new Transaction();
                 transaction1.setOrder(order1);
@@ -378,7 +409,8 @@ public class DatabaseInitializer {
             // Insert feedbacks if not present
             if (feedbackRepository.count() == 0) {
                 Feedback feedback1 = new Feedback();
-                feedback1.setComment("I bought the 'Modern LED Pendant Light' for my kitchen remodel, and it exceeded my expectations. Not only does it provide excellent lighting, but its sleek design also complements the contemporary style of my kitchen perfectly. Very satisfied!");
+                feedback1.setComment(
+                        "I bought the 'Modern LED Pendant Light' for my kitchen remodel, and it exceeded my expectations. Not only does it provide excellent lighting, but its sleek design also complements the contemporary style of my kitchen perfectly. Very satisfied!");
                 feedback1.setRate((short) 3);
                 feedback1.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
                 feedback1.setEmail("michael@gmail.com");
@@ -387,7 +419,8 @@ public class DatabaseInitializer {
                 feedbackRepository.flush();
 
                 Feedback feedback2 = new Feedback();
-                feedback2.setComment("I've been searching for the perfect bedside lamps for ages, and I finally found them at Chic and Lighting! The 'Vintage Glass Table Lamps' I purchased are stunning and add a cozy ambiance to my bedroom. Great selection and fast shipping!");
+                feedback2.setComment(
+                        "I've been searching for the perfect bedside lamps for ages, and I finally found them at UNIDECOR! The 'Vintage Glass Table Lamps' I purchased are stunning and add a cozy ambiance to my bedroom. Great selection and fast shipping!");
                 feedback2.setRate((short) 3);
                 feedback2.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
                 feedback2.setEmail("emily@gmail.com");
@@ -396,7 +429,8 @@ public class DatabaseInitializer {
                 feedbackRepository.flush();
 
                 Feedback feedback3 = new Feedback();
-                feedback3.setComment("I recently purchased the 'Elegant Crystal Chandelier' from Chic and Lighting, and I'm absolutely thrilled with it! The quality is top-notch, and it adds a touch of glamour to my dining room. Highly recommend!");
+                feedback3.setComment(
+                        "I recently purchased the 'Elegant Crystal Chandelier' from UNIDECOR, and I'm absolutely thrilled with it! The quality is top-notch, and it adds a touch of glamour to my dining room. Highly recommend!");
                 feedback3.setRate((short) 3);
                 feedback3.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
                 feedback3.setEmail("sarah@gmail.com");
@@ -415,9 +449,12 @@ public class DatabaseInitializer {
             }
             // Insert carts if not present
             if (cartRepository.count() == 0) {
-                User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson123")).findFirst().orElse(null);
-                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson1234")).findFirst().orElse(null);
-                User user3 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("admin")).findFirst().orElse(null);
+                User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson123"))
+                        .findFirst().orElse(null);
+                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson1234"))
+                        .findFirst().orElse(null);
+                User user3 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("admin"))
+                        .findFirst().orElse(null);
 
                 Cart cart1 = new Cart();
                 cart1.setUser(user2);
@@ -439,26 +476,34 @@ public class DatabaseInitializer {
             }
             if (orderDetailRepository.count() == 0) {
                 List<Orderdetail> orderDetails = Arrays.asList(
-                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(13L).orElse(null), 2, new BigDecimal("598.00")),
-                        new Orderdetail(productRepository.findById(25L).orElse(null), orderRepository.findById(13L).orElse(null), 3, new BigDecimal("2397.00")),
-                        new Orderdetail(productRepository.findById(41L).orElse(null), orderRepository.findById(14L).orElse(null), 3, new BigDecimal("119.85")),
-                        new Orderdetail(productRepository.findById(16L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("538.00")),
-                        new Orderdetail(productRepository.findById(19L).orElse(null), orderRepository.findById(15L).orElse(null), 3, new BigDecimal("1197.00")),
-                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("198.00")),
-                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(16L).orElse(null), 1, new BigDecimal("99.00")),
-                        new Orderdetail(productRepository.findById(8L).orElse(null), orderRepository.findById(17L).orElse(null), 3, new BigDecimal("1347.00")),
-                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(18L).orElse(null), 1, new BigDecimal("299.00")),
-                        new Orderdetail(productRepository.findById(13L).orElse(null), orderRepository.findById(18L).orElse(null), 2, new BigDecimal("458.00"))
-                );
+                        new Orderdetail(productRepository.findById(3L).orElse(null),
+                                orderRepository.findById(13L).orElse(null), 2, new BigDecimal("598.00")),
+                        new Orderdetail(productRepository.findById(25L).orElse(null),
+                                orderRepository.findById(13L).orElse(null), 3, new BigDecimal("2397.00")),
+                        new Orderdetail(productRepository.findById(41L).orElse(null),
+                                orderRepository.findById(14L).orElse(null), 3, new BigDecimal("119.85")),
+                        new Orderdetail(productRepository.findById(16L).orElse(null),
+                                orderRepository.findById(15L).orElse(null), 2, new BigDecimal("538.00")),
+                        new Orderdetail(productRepository.findById(19L).orElse(null),
+                                orderRepository.findById(15L).orElse(null), 3, new BigDecimal("1197.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null),
+                                orderRepository.findById(15L).orElse(null), 2, new BigDecimal("198.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null),
+                                orderRepository.findById(16L).orElse(null), 1, new BigDecimal("99.00")),
+                        new Orderdetail(productRepository.findById(8L).orElse(null),
+                                orderRepository.findById(17L).orElse(null), 3, new BigDecimal("1347.00")),
+                        new Orderdetail(productRepository.findById(3L).orElse(null),
+                                orderRepository.findById(18L).orElse(null), 1, new BigDecimal("299.00")),
+                        new Orderdetail(productRepository.findById(13L).orElse(null),
+                                orderRepository.findById(18L).orElse(null), 2, new BigDecimal("458.00")));
 
                 orderDetailRepository.saveAll(orderDetails);
-                System.out.println("Seeded order details successfully!");
             }
-        }
-        finally {
+        } finally {
 
         }
     }
+
     private Order createOrder(User user, Orderstatus status, String date) {
         return createOrder(user, status, date, "Vũ", "Cường", "Thai Nguyen", "0365473859", null);
     }
@@ -467,11 +512,13 @@ public class DatabaseInitializer {
         return createOrder(user, status, date, "Vũ", "Cường", "Thai Nguyen", "0365473859", note);
     }
 
-    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName, String address) {
+    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName,
+            String address) {
         return createOrder(user, status, date, firstName, lastName, address, "0365473859", null);
     }
 
-    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName, String address, String phone, String note) {
+    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName,
+            String address, String phone, String note) {
         Order order = new Order();
         order.setUser(user);
         order.setOrderstatus(status);
@@ -483,6 +530,7 @@ public class DatabaseInitializer {
         order.setNotes(note);
         return order;
     }
+
     private Productstatus getSale() {
         return productStatusRepository.findAll().stream()
                 .filter(status -> status.getName().equals("sale"))
