@@ -24,6 +24,15 @@ public class Orderdetail {
     @JoinColumn(name = "orderID", referencedColumnName = "id")
     private Order order;
 
+    public Orderdetail() {
+    }
+
+    public Orderdetail(Product product, Order order, Integer quantity, BigDecimal price) {
+        this.product = product;
+        this.order = order;
+        this.quantity = quantity;
+        this.price = price;
+    }
     public long getId() {
         return id;
     }

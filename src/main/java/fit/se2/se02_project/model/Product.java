@@ -256,4 +256,5 @@ public class Product {
     public void setRates(Collection<Rate> rates) {
         this.rates = rates;
     }
+
 }

@@ -156,38 +156,38 @@ public class DatabaseInitializer {
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-                        {"BEAU POLISHED BRASS TABLE LAMP", "399.00", "lamp", "299.00"},
-                        {"BIANCA MARBLE TABLE LAMP", "459.00", "lamp", "349.00"},
-                        {"EXPOSIOR POLISHED BRASS AND WALNUT TABLE LAMP", "499.00", "lamp", "379.00"},
-                        {"GRAZIANO INDOOR/OUTDOOR TRAVERTINE WALL SCONCE", "289.00", "wall", "219.00"},
-                        {"RONDA INDOOR/OUTDOOR BLACK FLUSH MOUNT LIGHT", "199.00", "wall", "149.00"},
-                        {"RONDA INDOOR/OUTDOOR MATTE BLACK WALL SCONCE", "249.00", "wall", "189.00"},
-                        {"RONDA INDOOR/OUTDOOR POLISHED BRASS FLUSH MOUNT LIGHT", "279.00", "wall", "209.00"},
-                        {"5 BROWN WINGS FAN", "349.00", "fan", "299.00"},
-                        {"3 BROWN WINGS FAN", "299.00", "fan", "249.00"},
-                        {"BALL CANDLES SET OF 2", "39.00", "accents", "29.00"},
-                        {"BRIGHTON TAPERED POLISHED STAINLESS STEEL PENDANT LIGHT 2", "529.00", "ceiling", "419.00"},
-                        {"ALDUS IVORY AND POLISHED BRASS ARTICULATING WALL SCONCE", "359.00", "wall", "279.00"},
-                        {"EXPOSIOR INDOOR/OUTDOOR BLACK PENDANT LIGHT MODEL 017", "489.00", "ceiling", "379.00"},
-                        {"5 BLACK WINGS FAN", "369.00", "fan", "319.00"},
-                        {"3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00"},
-                        {"5 WHITE WINGS FAN", "379.00", "fan", "329.00"},
-                        {"BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00"},
-                        {"BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "accents", "79.00"},
-                        {"CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "accents", "69.00"},
-                        {"DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "accents", "49.00"},
-                        {"FALCON METAL INCENSE BURNER", "79.00", "accents", "59.00"},
-                        {"ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "wall", "289.00"},
-                        {"5 BROWN LEAF WINGS FAN", "389.00", "fan", "339.00"},
-                        {"WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00"},
-                        {"CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "accents", "59.00"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00"},
-                        {"MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "accents", "59.00"},
-                        {"BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "ceiling", "439.00"},
-                        {"CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "accents", "49.00"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00"},
-                        {"NEW CEILING LIGHT", "599.00", "ceiling", "479.00"},
-                        {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00"}
+                        {"BEAU POLISHED BRASS TABLE LAMP", "399.00", "lamp", "299.00","/img/productImg/accent.jpg"},
+                        {"BIANCA MARBLE TABLE LAMP", "459.00", "lamp", "349.00","/img/productImg/accent.jpg"},
+                        {"EXPOSIOR POLISHED BRASS AND WALNUT TABLE LAMP", "499.00", "lamp", "379.00","/img/productImg/accent.jpg"},
+                        {"GRAZIANO INDOOR/OUTDOOR TRAVERTINE WALL SCONCE", "289.00", "wall", "219.00","/img/productImg/accent.jpg"},
+                        {"RONDA INDOOR/OUTDOOR BLACK FLUSH MOUNT LIGHT", "199.00", "wall", "149.00","/img/productImg/accent.jpg"},
+                        {"RONDA INDOOR/OUTDOOR MATTE BLACK WALL SCONCE", "249.00", "wall", "189.00","/img/productImg/accent.jpg"},
+                        {"RONDA INDOOR/OUTDOOR POLISHED BRASS FLUSH MOUNT LIGHT", "279.00", "wall", "209.00","/img/productImg/accent.jpg"},
+                        {"5 BROWN WINGS FAN", "349.00", "fan", "299.00","/img/productImg/accent.jpg"},
+                        {"3 BROWN WINGS FAN", "299.00", "fan", "249.00","/img/productImg/accent.jpg"},
+                        {"BALL CANDLES SET OF 2", "39.00", "accents", "29.00","/img/productImg/accent.jpg"},
+                        {"BRIGHTON TAPERED POLISHED STAINLESS STEEL PENDANT LIGHT 2", "529.00", "ceiling", "419.00","/img/productImg/accent.jpg"},
+                        {"ALDUS IVORY AND POLISHED BRASS ARTICULATING WALL SCONCE", "359.00", "wall", "279.00","/img/productImg/accent.jpg"},
+                        {"EXPOSIOR INDOOR/OUTDOOR BLACK PENDANT LIGHT MODEL 017", "489.00", "ceiling", "379.00","/img/productImg/accent.jpg"},
+                        {"5 BLACK WINGS FAN", "369.00", "fan", "319.00","/img/productImg/accent.jpg"},
+                        {"3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00","/img/productImg/accent.jpg"},
+                        {"5 WHITE WINGS FAN", "379.00", "fan", "329.00","/img/productImg/accent.jpg"},
+                        {"BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00","/img/productImg/accent.jpg"},
+                        {"BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "accents", "79.00","/img/productImg/accent.jpg"},
+                        {"CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "accents", "69.00","/img/productImg/accent.jpg"},
+                        {"DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "accents", "49.00","/img/productImg/accent.jpg"},
+                        {"FALCON METAL INCENSE BURNER", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
+                        {"ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "wall", "289.00","/img/productImg/accent.jpg"},
+                        {"5 BROWN LEAF WINGS FAN", "389.00", "fan", "339.00","/img/productImg/accent.jpg"},
+                        {"WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00","/img/productImg/accent.jpg"},
+                        {"CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
+                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
+                        {"MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
+                        {"BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "ceiling", "439.00","/img/productImg/accent.jpg"},
+                        {"CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
+                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
+                        {"NEW CEILING LIGHT", "599.00", "ceiling", "479.00","/img/productImg/accent.jpg"},
+                        {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00","/img/productImg/accent.jpg"}
                 };
 
                 List<Product> newProducts = new ArrayList<>();
@@ -198,7 +198,7 @@ public class DatabaseInitializer {
                     product.setCategory(categories.get(p[2]));
                     product.setQuantity(10);
                     product.setIsActive((byte) 1);
-                    product.setImage("/img/lightType/default.jpg");
+                    product.setImage(p[4]);
                     product.setProductstatus(saleStatus);
                     product.setSaleprice(new BigDecimal(p[3]));
                     newProducts.add(product);
@@ -413,21 +413,62 @@ public class DatabaseInitializer {
                 feedbackRepository.save(feedback4);
                 feedbackRepository.flush();
             }
+            // Insert carts if not present
+            if (cartRepository.count() == 0) {
+                User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson123")).findFirst().orElse(null);
+                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson1234")).findFirst().orElse(null);
+                User user3 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("admin")).findFirst().orElse(null);
+
+                Cart cart1 = new Cart();
+                cart1.setUser(user2);
+                cart1.setCreatedAt(Timestamp.valueOf("2024-04-05 04:31:08"));
+                cartRepository.save(cart1);
+                cartRepository.flush();
+
+                Cart cart2 = new Cart();
+                cart2.setUser(user1);
+                cart2.setCreatedAt(Timestamp.valueOf("2024-04-05 07:29:13"));
+                cartRepository.save(cart2);
+                cartRepository.flush();
+
+                Cart cart3 = new Cart();
+                cart3.setUser(user3);
+                cart3.setCreatedAt(Timestamp.valueOf("2024-05-13 02:02:24"));
+                cartRepository.save(cart3);
+                cartRepository.flush();
+            }
+            if (orderDetailRepository.count() == 0) {
+                List<Orderdetail> orderDetails = Arrays.asList(
+                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(13L).orElse(null), 2, new BigDecimal("598.00")),
+                        new Orderdetail(productRepository.findById(25L).orElse(null), orderRepository.findById(13L).orElse(null), 3, new BigDecimal("2397.00")),
+                        new Orderdetail(productRepository.findById(41L).orElse(null), orderRepository.findById(14L).orElse(null), 3, new BigDecimal("119.85")),
+                        new Orderdetail(productRepository.findById(16L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("538.00")),
+                        new Orderdetail(productRepository.findById(19L).orElse(null), orderRepository.findById(15L).orElse(null), 3, new BigDecimal("1197.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("198.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(16L).orElse(null), 1, new BigDecimal("99.00")),
+                        new Orderdetail(productRepository.findById(8L).orElse(null), orderRepository.findById(17L).orElse(null), 3, new BigDecimal("1347.00")),
+                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(18L).orElse(null), 1, new BigDecimal("299.00")),
+                        new Orderdetail(productRepository.findById(13L).orElse(null), orderRepository.findById(18L).orElse(null), 2, new BigDecimal("458.00"))
+                );
+
+                orderDetailRepository.saveAll(orderDetails);
+                System.out.println("Seeded order details successfully!");
+            }
         }
         finally {
 
         }
     }
     private Order createOrder(User user, Orderstatus status, String date) {
-        return createOrder(user, status, date, "Nguyễn", "Sơn", "Bac Ninh", "0926539328", null);
+        return createOrder(user, status, date, "Vũ", "Cường", "Thai Nguyen", "0365473859", null);
     }
 
     private Order createOrder(User user, Orderstatus status, String date, String note) {
-        return createOrder(user, status, date, "Nguyễn", "Sơn", "Bac Ninh", "0926539328", note);
+        return createOrder(user, status, date, "Vũ", "Cường", "Thai Nguyen", "0365473859", note);
     }
 
     private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName, String address) {
-        return createOrder(user, status, date, firstName, lastName, address, "0926539328", null);
+        return createOrder(user, status, date, firstName, lastName, address, "0365473859", null);
     }
 
     private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName, String address, String phone, String note) {
