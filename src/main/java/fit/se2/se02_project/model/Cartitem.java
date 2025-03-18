@@ -20,6 +20,13 @@ public class Cartitem {
     @JoinColumn(name = "cartID", referencedColumnName = "id")
     private Cart cart;
 
+    public Cartitem(long l, Product product1, Cart cart1, int i) {
+    }
+
+    public Cartitem() {
+
+    }
+
     public long getId() {
         return id;
     }

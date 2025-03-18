@@ -17,6 +17,12 @@ public class Payment {
     @OneToMany(mappedBy = "payment")
     private Collection<Transaction> transactions;
 
+    public Payment() {
+    }
+
+    public Payment(long l, String cod) {
+    }
+
     public long getId() {
         return id;
     }

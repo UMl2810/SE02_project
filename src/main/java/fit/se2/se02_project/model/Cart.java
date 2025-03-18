@@ -22,6 +22,13 @@ public class Cart {
     @OneToMany(mappedBy = "cart")
     private Collection<Cartitem> cartitems;
 
+    public Cart(long l, User user2, String s) {
+    }
+
+    public Cart() {
+
+    }
+
     public long getId() {
         return id;
     }

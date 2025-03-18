@@ -58,6 +58,13 @@ public class User {
     @JoinColumn(name = "RoleId", referencedColumnName = "id")
     private Role role;
 
+    public User(long l, String mail, String number, String admin, String hashedPassword, Role adminRole, String admin1, Object o, Object o1, String s, Object o2, Object o3, boolean b, String s1) {
+    }
+
+    public User() {
+
+    }
+
     public long getId() {
         return id;
     }

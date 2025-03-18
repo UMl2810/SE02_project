@@ -20,6 +20,12 @@ public class Orderstatus {
     @OneToMany(mappedBy = "orderstatus")
     private Collection<Order> orders;
 
+    public Orderstatus() {
+    }
+
+    public Orderstatus(long l, String shipping, String s) {
+    }
+
     public long getId() {
         return id;
     }

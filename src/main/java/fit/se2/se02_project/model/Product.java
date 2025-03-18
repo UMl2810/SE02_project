@@ -62,6 +62,13 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private Collection<Rate> rates;
 
+    public Product(long l, String cypressChampagneDoubleWallSconce, Object o, double v, Category category2, String s, int i, boolean b, String s1, Object o1, String s2, String admin, String s3, Productstatus productstatus, double v1) {
+    }
+
+    public Product() {
+
+    }
+
     public long getId() {
         return id;
     }

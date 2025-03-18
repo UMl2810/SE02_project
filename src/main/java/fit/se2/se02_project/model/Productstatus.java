@@ -17,6 +17,12 @@ public class Productstatus {
     @OneToMany(mappedBy = "productstatus")
     private Collection<Product> products;
 
+    public Productstatus() {
+    }
+
+    public Productstatus(long l, String available) {
+    }
+
     public long getId() {
         return id;
     }
@@ -60,4 +66,5 @@ public class Productstatus {
     public void setProducts(Collection<Product> products) {
         this.products = products;
     }
+
 }

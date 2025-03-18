@@ -17,6 +17,12 @@ public class Role {
     @OneToMany(mappedBy = "role")
     private Collection<User> users;
 
+    public Role() {
+    }
+
+    public Role(long l, String admin) {
+    }
+
     public long getId() {
         return id;
     }

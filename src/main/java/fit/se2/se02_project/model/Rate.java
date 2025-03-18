@@ -25,6 +25,12 @@ public class Rate {
     @JoinColumn(name = "productId", referencedColumnName = "id")
     private Product product;
 
+    public Rate() {
+    }
+
+    public Rate(long l, User user1, Product product1, int i, String s) {
+    }
+
     public long getId() {
         return id;
     }

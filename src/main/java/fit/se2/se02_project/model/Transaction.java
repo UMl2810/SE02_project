@@ -21,6 +21,13 @@ public class Transaction {
     @JoinColumn(name = "paymentID", referencedColumnName = "id")
     private Payment payment;
 
+    public Transaction(long l, Order order1, Payment payAtShop, double v) {
+    }
+
+    public Transaction() {
+
+    }
+
     public long getId() {
         return id;
     }

@@ -27,6 +27,13 @@ public class Feedback {
     @Column(name = "name")
     private String name;
 
+    public Feedback(long l, String s, int i, String s1, String mail, String michael) {
+    }
+
+    public Feedback() {
+
+    }
+
     public long getId() {
         return id;
     }

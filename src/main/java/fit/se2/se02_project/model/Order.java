@@ -42,6 +42,13 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Collection<Transaction> transactions;
 
+    public Order(long l, User user1, Orderstatus orderstatus, String s, String none, String nguyễn, String sơn, String bacNinh, String number) {
+    }
+
+    public Order() {
+
+    }
+
     public long getId() {
         return id;
     }
