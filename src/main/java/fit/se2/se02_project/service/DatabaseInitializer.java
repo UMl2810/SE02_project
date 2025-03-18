@@ -275,18 +275,18 @@ public class DatabaseInitializer {
             }
 
             if (transactionRepository.count() == 0) {
-                Order order1 = orderRepository.findAll().stream().filter(order -> order.getId() == 13).findFirst().orElse(null);
-                Order order2 = orderRepository.findAll().stream().filter(order -> order.getId() == 14).findFirst().orElse(null);
-                Order order3 = orderRepository.findAll().stream().filter(order -> order.getId() == 15).findFirst().orElse(null);
-                Order order4 = orderRepository.findAll().stream().filter(order -> order.getId() == 16).findFirst().orElse(null);
-                Order order5 = orderRepository.findAll().stream().filter(order -> order.getId() == 17).findFirst().orElse(null);
-                Order order6 = orderRepository.findAll().stream().filter(order -> order.getId() == 18).findFirst().orElse(null);
-                Order order7 = orderRepository.findAll().stream().filter(order -> order.getId() == 19).findFirst().orElse(null);
-                Order order8 = orderRepository.findAll().stream().filter(order -> order.getId() == 20).findFirst().orElse(null);
-                Order order9 = orderRepository.findAll().stream().filter(order -> order.getId() == 21).findFirst().orElse(null);
-                Order order10 = orderRepository.findAll().stream().filter(order -> order.getId() == 22).findFirst().orElse(null);
-                Order order11 = orderRepository.findAll().stream().filter(order -> order.getId() == 23).findFirst().orElse(null);
-                Order order12 = orderRepository.findAll().stream().filter(order -> order.getId() == 24).findFirst().orElse(null);
+                Order order1 = orderRepository.findById(1L).orElse(null);
+                Order order2 = orderRepository.findById(2L).orElse(null);
+                Order order3 = orderRepository.findById(3L).orElse(null);
+                Order order4 = orderRepository.findById(4L).orElse(null);
+                Order order5 = orderRepository.findById(5L).orElse(null);
+                Order order6 = orderRepository.findById(6L).orElse(null);
+                Order order7 = orderRepository.findById(7L).orElse(null);
+                Order order8 = orderRepository.findById(8L).orElse(null);
+                Order order9 = orderRepository.findById(9L).orElse(null);
+                Order order10 = orderRepository.findById(10L).orElse(null);
+                Order order11 = orderRepository.findById(11L).orElse(null);
+                Order order12 = orderRepository.findById(12L).orElse(null);
 
                 Payment cod = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("COD")).findFirst().orElse(null);
                 Payment payAtShop = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("Pay at shop")).findFirst().orElse(null);
