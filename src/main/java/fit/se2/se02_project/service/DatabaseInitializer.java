@@ -129,7 +129,6 @@ public class DatabaseInitializer {
                 categoryRepository.flush();
             }
 
-            // Insert product statuses if not present
             if (productStatusRepository.count() == 0) {
                 Productstatus availableStatus = new Productstatus();
                 availableStatus.setName("available");
@@ -148,97 +147,25 @@ public class DatabaseInitializer {
                 productStatusRepository.save(outOfStockStatus);
             }
 
-            // Insert products if not present
-            if (productRepository.count() < 52) {
+            if (productRepository.count() < 32) {
                 Map<String, Category> categories = categoryRepository.findAll().stream()
                         .collect(Collectors.toMap(Category::getCategoryName, category -> category));
 
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        { "BEAU POLISHED BRASS TABLE LAMP", "399.00", "lamp", "299.00", "/img/productImg/accent.jpg" },
-                        { "BIANCA MARBLE TABLE LAMP", "459.00", "lamp", "349.00", "/img/productImg/accent.jpg" },
-                        { "EXPOSIOR POLISHED BRASS AND WALNUT TABLE LAMP", "499.00", "lamp", "379.00",
-                                "/img/productImg/accent.jpg" },
-                        { "GRAZIANO INDOOR/OUTDOOR TRAVERTINE WALL SCONCE", "289.00", "wall", "219.00",
-                                "/img/productImg/accent.jpg" },
-                        { "RONDA INDOOR/OUTDOOR BLACK FLUSH MOUNT LIGHT", "199.00", "wall", "149.00",
-                                "/img/productImg/accent.jpg" },
-                        { "RONDA INDOOR/OUTDOOR MATTE BLACK WALL SCONCE", "249.00", "wall", "189.00",
-                                "/img/productImg/accent.jpg" },
-                        { "RONDA INDOOR/OUTDOOR POLISHED BRASS FLUSH MOUNT LIGHT", "279.00", "wall", "209.00",
-                                "/img/productImg/accent.jpg" },
-                        { "5 BROWN WINGS FAN", "349.00", "fan", "299.00", "/img/productImg/accent.jpg" },
-                        { "3 BROWN WINGS FAN", "299.00", "fan", "249.00", "/img/productImg/accent.jpg" },
-                        { "BALL CANDLES SET OF 2", "39.00", "accents", "29.00", "/img/productImg/accent.jpg" },
-                        { "BRIGHTON TAPERED POLISHED STAINLESS STEEL PENDANT LIGHT 2", "529.00", "ceiling", "419.00",
-                                "/img/productImg/accent.jpg" },
-                        { "ALDUS IVORY AND POLISHED BRASS ARTICULATING WALL SCONCE", "359.00", "wall", "279.00",
-                                "/img/productImg/accent.jpg" },
-                        { "EXPOSIOR INDOOR/OUTDOOR BLACK PENDANT LIGHT MODEL 017", "489.00", "ceiling", "379.00",
-                                "/img/productImg/accent.jpg" },
-                        { "5 BLACK WINGS FAN", "369.00", "fan", "319.00", "/img/productImg/accent.jpg" },
-                        { "3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00", "/img/productImg/accent.jpg" },
-                        { "5 WHITE WINGS FAN", "379.00", "fan", "329.00", "/img/productImg/accent.jpg" },
-                        { "BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00",
-                                "/img/productImg/accent.jpg" },
-                        { "BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "accents", "79.00",
-                                "/img/productImg/accent.jpg" },
-                        { "CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "accents", "69.00",
-                                "/img/productImg/accent.jpg" },
-                        { "DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "accents", "49.00",
-                                "/img/productImg/accent.jpg" },
-                        { "FALCON METAL INCENSE BURNER", "79.00", "accents", "59.00", "/img/productImg/accent.jpg" },
-                        { "ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "wall", "289.00",
-                                "/img/productImg/accent.jpg" },
-                        { "5 BROWN LEAF WINGS FAN", "389.00", "fan", "339.00", "/img/productImg/accent.jpg" },
-                        { "WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00",
-                                "/img/productImg/accent.jpg" },
-                        { "CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "accents", "59.00",
-                                "/img/productImg/accent.jpg" },
-                        { "DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00",
-                                "/img/productImg/accent.jpg" },
-                        { "MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "accents", "59.00",
-                                "/img/productImg/accent.jpg" },
-                        { "BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "ceiling", "439.00",
-                                "/img/productImg/accent.jpg" },
-                        { "CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "accents", "49.00",
-                                "/img/productImg/accent.jpg" },
-                        { "DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00",
-                                "/img/productImg/accent.jpg" },
-                        { "NEW CEILING LIGHT", "599.00", "ceiling", "479.00", "/img/productImg/accent.jpg" },
-                        { "ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00",
-                                "/img/productImg/accent.jpg" }
-=======
-                    {"MINITABLE", "399.00", "lamp", "299.00","/img/productImg/miniTable.jpg"},
-                    {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "lamp", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
-                    {"FRANCIS BENCH", "289.00", "wall", "219.00","/img/productImg/FRANCISBENCH.jpg"},
-                    {"DUCK FLOWER POT", "199.00", "wall", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
-                    {"DUCK PEN HOLDER", "249.00", "wall", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
-                    {"FLAT CAT VASE", "279.00", "wall", "209.00","/img/productImg/FLATCATVASE.jpg"},
-                    {"COUCH", "349.00", "fan", "299.00","/img/productImg/COUCH.jpg"},
-                    {"ARC COFFEE TABLE", "299.00", "fan", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
-                    {"TISSUE HOLDER", "39.00", "accents", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
-                    {"QUIRKY WOOD ROBOT", "529.00", "ceiling", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
-                    {"WALL CLOCK", "359.00", "wall", "279.00","/img/productImg/WALLCLOCK.jpg"},
-                    {"WOODEN FLOWER POT", "489.00", "ceiling", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
-=======
-                        {"BEAU POLISHED BRASS TABLE LAMP", "399.00", "lamp", "299.00","/img/productImg/accent.jpg"},
-                        {"BIANCA MARBLE TABLE LAMP", "459.00", "lamp", "349.00","/img/productImg/accent.jpg"},
-                        {"EXPOSIOR POLISHED BRASS AND WALNUT TABLE LAMP", "499.00", "lamp", "379.00","/img/productImg/accent.jpg"},
-                        {"GRAZIANO INDOOR/OUTDOOR TRAVERTINE WALL SCONCE", "289.00", "wall", "219.00","/img/productImg/accent.jpg"},
-                        {"RONDA INDOOR/OUTDOOR BLACK FLUSH MOUNT LIGHT", "199.00", "wall", "149.00","/img/productImg/accent.jpg"},
-                        {"RONDA INDOOR/OUTDOOR MATTE BLACK WALL SCONCE", "249.00", "wall", "189.00","/img/productImg/accent.jpg"},
-                        {"RONDA INDOOR/OUTDOOR POLISHED BRASS FLUSH MOUNT LIGHT", "279.00", "wall", "209.00","/img/productImg/accent.jpg"},
-                        {"5 BROWN WINGS FAN", "349.00", "fan", "299.00","/img/productImg/accent.jpg"},
-                        {"3 BROWN WINGS FAN", "299.00", "fan", "249.00","/img/productImg/accent.jpg"},
-                        {"BALL CANDLES SET OF 2", "39.00", "accents", "29.00","/img/productImg/accent.jpg"},
-                        {"BRIGHTON TAPERED POLISHED STAINLESS STEEL PENDANT LIGHT 2", "529.00", "ceiling", "419.00","/img/productImg/accent.jpg"},
-                        {"ALDUS IVORY AND POLISHED BRASS ARTICULATING WALL SCONCE", "359.00", "wall", "279.00","/img/productImg/accent.jpg"},
-                        {"EXPOSIOR INDOOR/OUTDOOR BLACK PENDANT LIGHT MODEL 017", "489.00", "ceiling", "379.00","/img/productImg/accent.jpg"},
->>>>>>> parent of 35e27a4 (text changing)
+                        {"MINITABLE", "399.00", "lamp", "299.00","/img/productImg/miniTable.jpg"},
+                        {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "lamp", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
+                        {"FRANCIS BENCH", "289.00", "wall", "219.00","/img/productImg/FRANCISBENCH.jpg"},
+                        {"DUCK FLOWER POT", "199.00", "wall", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
+                        {"DUCK PEN HOLDER", "249.00", "wall", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
+                        {"FLAT CAT VASE", "279.00", "wall", "209.00","/img/productImg/FLATCATVASE.jpg"},
+                        {"COUCH", "349.00", "fan", "299.00","/img/productImg/COUCH.jpg"},
+                        {"ARC COFFEE TABLE", "299.00", "fan", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
+                        {"TISSUE HOLDER", "39.00", "accents", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
+                        {"QUIRKY WOOD ROBOT", "529.00", "ceiling", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
+                        {"WALL CLOCK", "359.00", "wall", "279.00","/img/productImg/WALLCLOCK.jpg"},
+                        {"WOODEN FLOWER POT", "489.00", "ceiling", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
                         {"5 BLACK WINGS FAN", "369.00", "fan", "319.00","/img/productImg/accent.jpg"},
                         {"3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00","/img/productImg/accent.jpg"},
                         {"5 WHITE WINGS FAN", "379.00", "fan", "329.00","/img/productImg/accent.jpg"},
@@ -258,10 +185,6 @@ public class DatabaseInitializer {
                         {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
                         {"NEW CEILING LIGHT", "599.00", "ceiling", "479.00","/img/productImg/accent.jpg"},
                         {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00","/img/productImg/accent.jpg"}
-<<<<<<< HEAD
->>>>>>> cc759b06858b847a8be843451f6b22a8a5f0a6ee
-=======
->>>>>>> parent of 35e27a4 (text changing)
                 };
 
                 List<Product> newProducts = new ArrayList<>();
