@@ -147,6 +147,10 @@ public class DatabaseInitializer {
                 productStatusRepository.save(outOfStockStatus);
             }
 
+<<<<<<< Updated upstream
+=======
+            // Insert products if not present
+>>>>>>> Stashed changes
             if (productRepository.count() < 32) {
                 Map<String, Category> categories = categoryRepository.findAll().stream()
                         .collect(Collectors.toMap(Category::getCategoryName, category -> category));
@@ -154,6 +158,7 @@ public class DatabaseInitializer {
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
+<<<<<<< Updated upstream
                         {"MINITABLE", "399.00", "bench", "299.00","/img/productImg/miniTable.jpg"},
                         {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "bench", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
                         {"FRANCIS BENCH", "289.00", "bench", "219.00","/img/productImg/FRANCISBENCH.jpg"},
@@ -185,6 +190,39 @@ public class DatabaseInitializer {
                         {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
                         {"NEW CEILING LIGHT", "599.00", "pottery", "479.00","/img/productImg/accent.jpg"},
                         {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "pottery", "249.00","/img/productImg/accent.jpg"}
+=======
+                    {"MINITABLE", "399.00", "lamp", "299.00","/img/productImg/miniTable.jpg"},
+                    {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "lamp", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
+                    {"FRANCIS BENCH", "289.00", "wall", "219.00","/img/productImg/FRANCISBENCH.jpg"},
+                    {"DUCK FLOWER POT", "199.00", "wall", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
+                    {"DUCK PEN HOLDER", "249.00", "wall", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
+                    {"FLAT CAT VASE", "279.00", "wall", "209.00","/img/productImg/FLATCATVASE.jpg"},
+                    {"COUCH", "349.00", "fan", "299.00","/img/productImg/COUCH.jpg"},
+                    {"ARC COFFEE TABLE", "299.00", "fan", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
+                    {"TISSUE HOLDER", "39.00", "accents", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
+                    {"QUIRKY WOOD ROBOT", "529.00", "ceiling", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
+                    {"WALL CLOCK", "359.00", "wall", "279.00","/img/productImg/WALLCLOCK.jpg"},
+                    {"WOODEN FLOWER POT", "489.00", "ceiling", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
+                        {"SIDE TABLE", "369.00", "fan", "319.00","/img/productImg/SIDETABLE.jpg"},
+                        {"BEDSIDE TABLE", "319.00", "fan", "269.00","/img/productImg/BEDSIDETABLE.jpg"},
+                        {"MAKEUP STORAGE SHELF", "379.00", "fan", "329.00","/img/productImg/MAKEUPSTORAGESHELF.jpg"},
+                        {"DUCK BOOKENDS", "49.00", "accents", "39.00","/img/productImg/DUCKBOOKENDS.jpg"},
+                        {"KIM SIDE TABLE", "99.00", "accents", "79.00","/img/productImg/KIMSIDETABLE.jpg"},
+                        {"WILD COFFEE TABLE", "89.00", "accents", "69.00","/img/productImg/WILDCOFFEETABLE.jpg"},
+                        {"SANDWICH COOKIES SIMPLE END TABLE", "59.00", "accents", "49.00","/img/productImg/sandwichcookiessimpleendtable.jpg"},
+                        {"WHITE COFFEE TABLE", "79.00", "accents", "59.00","/img/productImg/WHITECOFFEETABLE.jpg"},
+                        {"COMBINATION OF HUMANS AND PET NESTS", "369.00", "wall", "289.00","/img/productImg/COMBINATIONOFHUMANSANDPETNESTS.jpg"},
+                        {"CAT BEDS", "389.00", "fan", "339.00","/img/productImg/CATBEDS.jpg"},
+                        {"SUN FLOWER CAT BED", "49.00", "accents", "39.00","/img/productImg/SUNFLOWERCATBED.jpg"},
+                        {"JELLYCAT SOFA", "79.00", "accents", "59.00","/img/productImg/JELLYCATSOFA.jpg"},
+                        {"ARTISTIC ONYX MARBLE CONSOLE TABLE", "69.00", "accents", "49.00","/img/productImg/ArtisticOnyxMarbleConsoleTable.jpg"},
+                        {"CLOUD AND ECLIPSE LAMP", "79.00", "accents", "59.00","/img/productImg/CLOUDANDECLIPSELAMP.jpg"},
+                        {"SET OF 4 SMALL FLOWER VASE", "549.00", "ceiling", "439.00","/img/productImg/SMALLFLOWERVASE.jpg"},
+                        {"CREAM-COLORED METAL SOFA", "69.00", "accents", "49.00","/img/productImg/CREAM-COLOREDMETALSOFA.jpg"},
+                        {"NORDIC COFFEE TABLE", "69.00", "accents", "49.00","/img/productImg/NORDICCOFFEETABLE.jpg"},
+                        {"MUGS COFFEE CUP SET", "599.00", "ceiling", "479.00","/img/productImg/MUGSCOFFEECUPSET.jpg"},
+                        {"BUNNY FLOOR MIRROR", "329.00", "lamp", "249.00","/img/productImg/BUNNYFLOORMIRROR.jpg"}
+>>>>>>> Stashed changes
                 };
 
                 List<Product> newProducts = new ArrayList<>();
