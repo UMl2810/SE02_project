@@ -67,21 +67,21 @@ public class DatabaseInitializer {
                 User admin = new User();
                 admin.setUsername("admin");
                 admin.setPassword("123123"); // Hash mật khẩu nếu cần
-                admin.setEmail("chicandlighting@gmail.com");
+                admin.setEmail("unidecor@gmail.com");
                 admin.setRole(adminRole);
                 userRepository.save(admin);
 
                 User user1 = new User();
-                user1.setUsername("hoangson123");
+                user1.setUsername("ngoccuong123");
                 user1.setPassword("hashed_password"); // Hash mật khẩu nếu cần
-                user1.setEmail("sonnguyen10112003@gmail.com");
+                user1.setEmail("vncuong2810@gmail.com");
                 user1.setRole(userRole);
                 userRepository.save(user1);
 
                 User user2 = new User();
-                user2.setUsername("hoangson1234");
+                user2.setUsername("ngoncuong1234");
                 user2.setPassword("hashed_password"); // Hash mật khẩu nếu cần
-                user2.setEmail("sonhoang10112003@gmail.com");
+                user2.setEmail("vncuong2810@gmail.com");
                 user2.setRole(userRole);
                 userRepository.save(user2);
             }
@@ -166,7 +166,7 @@ public class DatabaseInitializer {
                     {"WALL CLOCK", "359.00", "decor", "279.00","/img/productImg/WALLCLOCK.jpg"},
                     {"WOODEN FLOWER POT", "489.00", "decor", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
                     {"SIDE TABLE", "369.00", "table", "319.00","/img/productImg/SIDETABLE.jpg"},
-                    {"BEDSIDE TABLE", "319.00", "table", "269.00","/img/productImg/BEDSIDETABLE.jpg"},
+                        {"BEDSIDE TABLE", "319.00", "table", "269.00","/img/productImg/BEDSIDETABLE.jpg"},
                         {"MAKEUP STORAGE SHELF", "379.00", "decor", "329.00","/img/productImg/MAKEUPSTORAGESHELF.jpg"},
                         {"DUCK BOOKENDS", "49.00", "decor", "39.00","/img/productImg/DUCKBOOKENDS.jpg"},
                         {"KIM SIDE TABLE", "99.00", "table", "79.00","/img/productImg/KIMSIDETABLE.jpg"},
@@ -231,28 +231,28 @@ public class DatabaseInitializer {
             }
             if (orderRepository.count() == 0) {
                 User user1 = userRepository.findAll().stream()
-                        .filter(user -> user.getUsername().equals("hoangson123"))
+                        .filter(user -> user.getUsername().equals("ngoccuong123"))
                         .findFirst().orElse(null);
                 User user2 = userRepository.findAll().stream()
-                        .filter(user -> user.getUsername().equals("hoangson1234"))
+                        .filter(user -> user.getUsername().equals("ngoccuong1234"))
                         .findFirst().orElse(null);
 
                 Map<String, Orderstatus> statusMap = orderStatusRepository.findAll().stream()
                         .collect(Collectors.toMap(Orderstatus::getName, status -> status));
 
                 List<Order> orders = Arrays.asList(
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-05 10:01:52"),
-                        createOrder(user1, statusMap.get("Canceled"), "2024-04-05 15:15:01"),
-                        createOrder(user1, statusMap.get("Canceled"), "2024-04-06 09:39:20"),
-                        createOrder(user1, statusMap.get("Accomplished"), "2024-04-08 03:15:23"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-08 03:17:06"),
-                        createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-08 03:18:23"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-12 06:04:34", "Giao gio hanh chinh"),
-                        createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-12 06:07:56", "Giao gio hanh chinh"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-13 09:37:24", "Giao gio hanh chinh"),
-                        createOrder(user2, statusMap.get("Canceled"), "2024-05-13 02:43:56", "Nguyen Duc", "Son", "Yen Phong"),
-                        createOrder(user2, statusMap.get("Wait for confirmation"), "2024-05-13 02:47:35", "Nguyen Duc", "Son", "Yen Phong"),
-                        createOrder(user1, statusMap.get("Canceled"), "2024-05-14 02:29:38", "Nguyen Duc", "Son", "Yen Phong")
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-03-03 10:01:52"),
+                        createOrder(user1, statusMap.get("Canceled"), "2025-03-03 15:15:01"),
+                        createOrder(user1, statusMap.get("Canceled"), "2025-03-03 09:39:20"),
+                        createOrder(user1, statusMap.get("Accomplished"), "2025-03-03 03:15:23"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-03-03 03:17:06"),
+                        createOrder(user1, statusMap.get("Wait for delivery"), "2025-03-03 03:18:23"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-03-03 06:04:34", "Giao gio hanh chinh"),
+                        createOrder(user1, statusMap.get("Wait for delivery"), "2025-03-03 06:07:56", "Giao gio hanh chinh"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-03-03 09:37:24", "Giao gio hanh chinh"),
+                        createOrder(user2, statusMap.get("Canceled"), "2025-03-04 02:43:56", "Vu Ngoc", "Cuong", "Thai Nguyen"),
+                        createOrder(user2, statusMap.get("Wait for confirmation"), "2025-03-05 02:47:35", "Vu Ngoc", "Cuong", "Thai Nguyen"),
+                        createOrder(user1, statusMap.get("Canceled"), "2025-03-10 02:29:38", "Vu Ngoc", "Cuong", "Thai Nguyen")
                 );
 
                 orderRepository.saveAll(orders);
@@ -374,27 +374,27 @@ public class DatabaseInitializer {
             // Insert feedbacks if not present
             if (feedbackRepository.count() == 0) {
                 Feedback feedback1 = new Feedback();
-                feedback1.setComment("I bought the 'Modern LED Pendant Light' for my kitchen remodel, and it exceeded my expectations. Not only does it provide excellent lighting, but its sleek design also complements the contemporary style of my kitchen perfectly. Very satisfied!");
+                feedback1.setComment("I bought the table from Unidecor, and it exceeded my expectations. Very satisfied!");
                 feedback1.setRate((short) 3);
-                feedback1.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
+                feedback1.setCreatedAt(Timestamp.valueOf("2025-03-02 16:40:06"));
                 feedback1.setEmail("michael@gmail.com");
                 feedback1.setName("Michael");
                 feedbackRepository.save(feedback1);
                 feedbackRepository.flush();
 
                 Feedback feedback2 = new Feedback();
-                feedback2.setComment("I've been searching for the perfect bedside lamps for ages, and I finally found them at Chic and Lighting! The 'Vintage Glass Table Lamps' I purchased are stunning and add a cozy ambiance to my bedroom. Great selection and fast shipping!");
+                feedback2.setComment("I've been searching for the perfect bedside lamps for ages, and I finally found them at Unidecor! The lamp are stunning and add a cozy ambiance to my bedroom. Great selection and fast shipping!");
                 feedback2.setRate((short) 3);
-                feedback2.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
+                feedback2.setCreatedAt(Timestamp.valueOf("2025-05-02 16:40:06"));
                 feedback2.setEmail("emily@gmail.com");
                 feedback2.setName("Emily");
                 feedbackRepository.save(feedback2);
                 feedbackRepository.flush();
 
                 Feedback feedback3 = new Feedback();
-                feedback3.setComment("I recently purchased the 'Elegant Crystal Chandelier' from Chic and Lighting, and I'm absolutely thrilled with it! The quality is top-notch, and it adds a touch of glamour to my dining room. Highly recommend!");
+                feedback3.setComment("I recently purchased an table from Unidecor, and I'm absolutely thrilled with it! The quality is top-notch, and it adds a touch of glamour to my dining room. Highly recommend!");
                 feedback3.setRate((short) 3);
-                feedback3.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
+                feedback3.setCreatedAt(Timestamp.valueOf("2025-03-02 16:40:06"));
                 feedback3.setEmail("sarah@gmail.com");
                 feedback3.setName("Sarah");
                 feedbackRepository.save(feedback3);
@@ -403,7 +403,7 @@ public class DatabaseInitializer {
                 Feedback feedback4 = new Feedback();
                 feedback4.setComment("Very good");
                 feedback4.setRate((short) 3);
-                feedback4.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
+                feedback4.setCreatedAt(Timestamp.valueOf("2025-03-02 16:40:06"));
                 feedback4.setEmail("j97@gmail.com");
                 feedback4.setName("Jack");
                 feedbackRepository.save(feedback4);
@@ -417,19 +417,19 @@ public class DatabaseInitializer {
 
                 Cart cart1 = new Cart();
                 cart1.setUser(user2);
-                cart1.setCreatedAt(Timestamp.valueOf("2024-04-05 04:31:08"));
+                cart1.setCreatedAt(Timestamp.valueOf("2025-03-04 04:31:08"));
                 cartRepository.save(cart1);
                 cartRepository.flush();
 
                 Cart cart2 = new Cart();
                 cart2.setUser(user1);
-                cart2.setCreatedAt(Timestamp.valueOf("2024-04-05 07:29:13"));
+                cart2.setCreatedAt(Timestamp.valueOf("2025-03-04 07:29:13"));
                 cartRepository.save(cart2);
                 cartRepository.flush();
 
                 Cart cart3 = new Cart();
                 cart3.setUser(user3);
-                cart3.setCreatedAt(Timestamp.valueOf("2024-05-13 02:02:24"));
+                cart3.setCreatedAt(Timestamp.valueOf("2025-03-04 02:02:24"));
                 cartRepository.save(cart3);
                 cartRepository.flush();
             }
