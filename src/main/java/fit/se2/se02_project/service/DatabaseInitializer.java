@@ -115,7 +115,7 @@ public class DatabaseInitializer {
                 categoryRepository.flush();
 
                 Category category5 = new Category();
-                category5.setCategoryName("leather");
+                category5.setCategoryName("leather"); //for pets//
                 category5.setDescription("Stay cool and stylish with our range of leather fans...");
                 category5.setIsActive((byte) 1);
                 categoryRepository.save(category5);
@@ -146,11 +146,6 @@ public class DatabaseInitializer {
                 outOfStockStatus.setName("outofstock");
                 productStatusRepository.save(outOfStockStatus);
             }
-
-<<<<<<< Updated upstream
-=======
-            // Insert products if not present
->>>>>>> Stashed changes
             if (productRepository.count() < 32) {
                 Map<String, Category> categories = categoryRepository.findAll().stream()
                         .collect(Collectors.toMap(Category::getCategoryName, category -> category));
@@ -158,37 +153,37 @@ public class DatabaseInitializer {
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-                        {"MINITABLE", "399.00", "bench", "299.00","/img/productImg/miniTable.jpg"},
-                        {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "bench", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
-                        {"FRANCIS BENCH", "289.00", "bench", "219.00","/img/productImg/FRANCISBENCH.jpg"},
-                        {"DUCK FLOWER POT", "199.00", "bench", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
-                        {"DUCK PEN HOLDER", "249.00", "bench", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
-                        {"FLAT CAT VASE", "279.00", "bench", "209.00","/img/productImg/FLATCATVASE.jpg"},
-                        {"COUCH", "349.00", "decor", "299.00","/img/productImg/COUCH.jpg"},
-                        {"ARC COFFEE TABLE", "299.00", "decor", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
-                        {"TISSUE HOLDER", "39.00", "pottery", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
-                        {"QUIRKY WOOD ROBOT", "529.00", "pottery", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
-                        {"WALL CLOCK", "359.00", "bench", "279.00","/img/productImg/WALLCLOCK.jpg"},
-                        {"WOODEN FLOWER POT", "489.00", "pottery", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
-                        {"5 BLACK WINGS FAN", "369.00", "decor", "319.00","/img/productImg/accent.jpg"},
-                        {"3 BROWN WINGS FAN PREMIUM", "319.00", "decor", "269.00","/img/productImg/accent.jpg"},
-                        {"5 WHITE WINGS FAN", "379.00", "decor", "329.00","/img/productImg/accent.jpg"},
-                        {"BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "pottery", "39.00","/img/productImg/accent.jpg"},
-                        {"BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "pottery", "79.00","/img/productImg/accent.jpg"},
-                        {"CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "pottery", "69.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "pottery", "49.00","/img/productImg/accent.jpg"},
-                        {"FALCON METAL INCENSE BURNER", "79.00", "pottery", "59.00","/img/productImg/accent.jpg"},
-                        {"ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "bench", "289.00","/img/productImg/accent.jpg"},
-                        {"5 BROWN LEAF WINGS FAN", "389.00", "decor", "339.00","/img/productImg/accent.jpg"},
-                        {"WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "pottery", "39.00","/img/productImg/accent.jpg"},
-                        {"CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "pottery", "59.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
-                        {"MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "pottery", "59.00","/img/productImg/accent.jpg"},
-                        {"BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "pottery", "439.00","/img/productImg/accent.jpg"},
-                        {"CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
-                        {"NEW CEILING LIGHT", "599.00", "pottery", "479.00","/img/productImg/accent.jpg"},
-                        {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "pottery", "249.00","/img/productImg/accent.jpg"}
+                    {"MINITABLE", "399.00", "table", "299.00","/img/productImg/miniTable.jpg"},
+                    {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "decor", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
+                    {"FRANCIS BENCH", "289.00", "bench", "219.00","/img/productImg/FRANCISBENCH.jpg"},
+                    {"DUCK FLOWER POT", "199.00", "pottery", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
+                    {"DUCK PEN HOLDER", "249.00", "pottery", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
+                    {"FLAT CAT VASE", "279.00", "potter", "209.00","/img/productImg/FLATCATVASE.jpg"},
+                    {"COUCH", "349.00", "bench", "299.00","/img/productImg/COUCH.jpg"},
+                    {"ARC COFFEE TABLE", "299.00", "table", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
+                    {"TISSUE HOLDER", "39.00", "potter", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
+                    {"QUIRKY WOOD ROBOT", "529.00", "decor", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
+                    {"WALL CLOCK", "359.00", "decor", "279.00","/img/productImg/WALLCLOCK.jpg"},
+                    {"WOODEN FLOWER POT", "489.00", "decor", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
+                    {"SIDE TABLE", "369.00", "table", "319.00","/img/productImg/SIDETABLE.jpg"},
+                    {"BEDSIDE TABLE", "319.00", "table", "269.00","/img/productImg/BEDSIDETABLE.jpg"},
+                        {"MAKEUP STORAGE SHELF", "379.00", "decor", "329.00","/img/productImg/MAKEUPSTORAGESHELF.jpg"},
+                        {"DUCK BOOKENDS", "49.00", "decor", "39.00","/img/productImg/DUCKBOOKENDS.jpg"},
+                        {"KIM SIDE TABLE", "99.00", "table", "79.00","/img/productImg/KIMSIDETABLE.jpg"},
+                        {"WILD COFFEE TABLE", "89.00", "table", "69.00","/img/productImg/WILDCOFFEETABLE.jpg"},
+                        {"SANDWICH COOKIES SIMPLE END TABLE", "59.00", "table", "49.00","/img/productImg/sandwichcookiessimpleendtable.jpg"},
+                        {"WHITE COFFEE TABLE", "79.00", "table", "59.00","/img/productImg/WHITECOFFEETABLE.jpg"},
+                        {"COMBINATION OF HUMANS AND PET NESTS", "369.00", "leather", "289.00","/img/productImg/COMBINATIONOFHUMANSANDPETNESTS.jpg"},
+                        {"CAT BEDS", "389.00", "leather", "339.00","/img/productImg/CATBEDS.jpg"},
+                        {"SUN FLOWER CAT BED", "49.00", "leather", "39.00","/img/productImg/SUNFLOWERCATBED.jpg"},
+                        {"JELLYCAT SOFA", "79.00", "sofa", "59.00","/img/productImg/JELLYCATSOFA.jpg"},
+                        {"ARTISTIC ONYX MARBLE CONSOLE TABLE", "69.00", "table", "49.00","/img/productImg/ArtisticOnyxMarbleConsoleTable.jpg"},
+                        {"CLOUD AND ECLIPSE LAMP", "79.00", "decor", "59.00","/img/productImg/CLOUDANDECLIPSELAMP.jpg"},
+                        {"SET OF 4 SMALL FLOWER VASE", "549.00", "pottery", "439.00","/img/productImg/SMALLFLOWERVASE.jpg"},
+                        {"CREAM-COLORED METAL SOFA", "69.00", "sofa", "49.00","/img/productImg/CREAM-COLOREDMETALSOFA.jpg"},
+                        {"NORDIC COFFEE TABLE", "69.00", "table", "49.00","/img/productImg/NORDICCOFFEETABLE.jpg"},
+                        {"MUGS COFFEE CUP SET", "599.00", "pottery", "479.00","/img/productImg/MUGSCOFFEECUPSET.jpg"},
+                        {"BUNNY FLOOR MIRROR", "329.00", "decor", "249.00","/img/productImg/BUNNYFLOORMIRROR.jpg"}
                 };
 
                 List<Product> newProducts = new ArrayList<>();
