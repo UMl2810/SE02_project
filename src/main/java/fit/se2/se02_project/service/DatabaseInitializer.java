@@ -87,42 +87,42 @@ public class DatabaseInitializer {
             }
             if (categoryRepository.count() == 0) {
                 Category category1 = new Category();
-                category1.setCategoryName("ceiling");
+                category1.setCategoryName("bench");
                 category1.setDescription("Discover chic ceiling lights to elevate your space. Explore modern designs and timeless classics for a touch of elegance in any room.");
                 category1.setIsActive((byte) 1);
                 categoryRepository.save(category1);
                 categoryRepository.flush();
 
                 Category category2 = new Category();
-                category2.setCategoryName("wall");
+                category2.setCategoryName("sofa");
                 category2.setDescription("Add warmth and style to your walls...");
                 category2.setIsActive((byte) 1);
                 categoryRepository.save(category2);
                 categoryRepository.flush();
 
                 Category category3 = new Category();
-                category3.setCategoryName("lamp");
+                category3.setCategoryName("table");
                 category3.setDescription("Illuminate your space with our exquisite lamps...");
                 category3.setIsActive((byte) 1);
                 categoryRepository.save(category3);
                 categoryRepository.flush();
 
                 Category category4 = new Category();
-                category4.setCategoryName("outdoor");
+                category4.setCategoryName("decor");
                 category4.setDescription("Light up your outdoor spaces with style...");
                 category4.setIsActive((byte) 1);
                 categoryRepository.save(category4);
                 categoryRepository.flush();
 
                 Category category5 = new Category();
-                category5.setCategoryName("fan");
-                category5.setDescription("Stay cool and stylish with our range of ceiling fans...");
+                category5.setCategoryName("leather");
+                category5.setDescription("Stay cool and stylish with our range of leather fans...");
                 category5.setIsActive((byte) 1);
                 categoryRepository.save(category5);
                 categoryRepository.flush();
 
                 Category category6 = new Category();
-                category6.setCategoryName("accents");
+                category6.setCategoryName("pottery");
                 category6.setDescription("Elevate your space with our curated selection of home accents...");
                 category6.setIsActive((byte) 1);
                 categoryRepository.save(category6);
@@ -154,37 +154,37 @@ public class DatabaseInitializer {
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-                        {"MINITABLE", "399.00", "lamp", "299.00","/img/productImg/miniTable.jpg"},
-                        {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "lamp", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
-                        {"FRANCIS BENCH", "289.00", "wall", "219.00","/img/productImg/FRANCISBENCH.jpg"},
-                        {"DUCK FLOWER POT", "199.00", "wall", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
-                        {"DUCK PEN HOLDER", "249.00", "wall", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
-                        {"FLAT CAT VASE", "279.00", "wall", "209.00","/img/productImg/FLATCATVASE.jpg"},
-                        {"COUCH", "349.00", "fan", "299.00","/img/productImg/COUCH.jpg"},
-                        {"ARC COFFEE TABLE", "299.00", "fan", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
-                        {"TISSUE HOLDER", "39.00", "accents", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
-                        {"QUIRKY WOOD ROBOT", "529.00", "ceiling", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
-                        {"WALL CLOCK", "359.00", "wall", "279.00","/img/productImg/WALLCLOCK.jpg"},
-                        {"WOODEN FLOWER POT", "489.00", "ceiling", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
-                        {"5 BLACK WINGS FAN", "369.00", "fan", "319.00","/img/productImg/accent.jpg"},
-                        {"3 BROWN WINGS FAN PREMIUM", "319.00", "fan", "269.00","/img/productImg/accent.jpg"},
-                        {"5 WHITE WINGS FAN", "379.00", "fan", "329.00","/img/productImg/accent.jpg"},
-                        {"BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00","/img/productImg/accent.jpg"},
-                        {"BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "accents", "79.00","/img/productImg/accent.jpg"},
-                        {"CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "accents", "69.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"FALCON METAL INCENSE BURNER", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
-                        {"ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "wall", "289.00","/img/productImg/accent.jpg"},
-                        {"5 BROWN LEAF WINGS FAN", "389.00", "fan", "339.00","/img/productImg/accent.jpg"},
-                        {"WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "accents", "39.00","/img/productImg/accent.jpg"},
-                        {"CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "accents", "59.00","/img/productImg/accent.jpg"},
-                        {"BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "ceiling", "439.00","/img/productImg/accent.jpg"},
-                        {"CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "accents", "49.00","/img/productImg/accent.jpg"},
-                        {"NEW CEILING LIGHT", "599.00", "ceiling", "479.00","/img/productImg/accent.jpg"},
-                        {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "lamp", "249.00","/img/productImg/accent.jpg"}
+                        {"MINITABLE", "399.00", "bench", "299.00","/img/productImg/miniTable.jpg"},
+                        {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "bench", "379.00","/img/productImg/WhiteArchedWallMountedShelf.jpg"},
+                        {"FRANCIS BENCH", "289.00", "bench", "219.00","/img/productImg/FRANCISBENCH.jpg"},
+                        {"DUCK FLOWER POT", "199.00", "bench", "149.00","/img/productImg/DUCKFLOWERPOT.jpg"},
+                        {"DUCK PEN HOLDER", "249.00", "bench", "189.00","/img/productImg/DUCKPENHOLDER.jpg"},
+                        {"FLAT CAT VASE", "279.00", "bench", "209.00","/img/productImg/FLATCATVASE.jpg"},
+                        {"COUCH", "349.00", "decor", "299.00","/img/productImg/COUCH.jpg"},
+                        {"ARC COFFEE TABLE", "299.00", "decor", "249.00","/img/productImg/ARCCOFFEETABLE.jpg"},
+                        {"TISSUE HOLDER", "39.00", "pottery", "29.00","/img/productImg/TISSUEHOLDER.jpg"},
+                        {"QUIRKY WOOD ROBOT", "529.00", "pottery", "419.00","/img/productImg/QUIRKYWOODROBOT.jpg"},
+                        {"WALL CLOCK", "359.00", "bench", "279.00","/img/productImg/WALLCLOCK.jpg"},
+                        {"WOODEN FLOWER POT", "489.00", "pottery", "379.00","/img/productImg/WOODENFLOWERPOT.jpg"},
+                        {"5 BLACK WINGS FAN", "369.00", "decor", "319.00","/img/productImg/accent.jpg"},
+                        {"3 BROWN WINGS FAN PREMIUM", "319.00", "decor", "269.00","/img/productImg/accent.jpg"},
+                        {"5 WHITE WINGS FAN", "379.00", "decor", "329.00","/img/productImg/accent.jpg"},
+                        {"BLACK TWISTED TAPER CANDLES SET OF 2", "49.00", "pottery", "39.00","/img/productImg/accent.jpg"},
+                        {"BRIX GOLDEN BLACK MARBLE INCENSE BURNER", "99.00", "pottery", "79.00","/img/productImg/accent.jpg"},
+                        {"CINQ LARGE MULTI WHITE TAPER CANDLE HOLDER", "89.00", "pottery", "69.00","/img/productImg/accent.jpg"},
+                        {"DREAMER IN LONDON CEDARWOOD AND VANILLA CANDLE", "59.00", "pottery", "49.00","/img/productImg/accent.jpg"},
+                        {"FALCON METAL INCENSE BURNER", "79.00", "pottery", "59.00","/img/productImg/accent.jpg"},
+                        {"ALDUS BLACK AND POLISHED BRASS ARTICULATING WALL SCONCE", "369.00", "bench", "289.00","/img/productImg/accent.jpg"},
+                        {"5 BROWN LEAF WINGS FAN", "389.00", "decor", "339.00","/img/productImg/accent.jpg"},
+                        {"WHITE TWISTED TAPER CANDLES SET OF 2", "49.00", "pottery", "39.00","/img/productImg/accent.jpg"},
+                        {"CINQ MEDIUM MULTI WHITE TAPER CANDLE HOLDER", "79.00", "pottery", "59.00","/img/productImg/accent.jpg"},
+                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
+                        {"MYSTIC CITY LONDON SCENTED CANDLE", "79.00", "pottery", "59.00","/img/productImg/accent.jpg"},
+                        {"BRIGHTON TAPERED BRASS PENDANT LIGHT", "549.00", "pottery", "439.00","/img/productImg/accent.jpg"},
+                        {"CINQ SMALL MULTI WHITE TAPER CANDLE HOLDER", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
+                        {"DREAMER IN LONDON SCENTED CANDLE", "69.00", "pottery", "49.00","/img/productImg/accent.jpg"},
+                        {"NEW CEILING LIGHT", "599.00", "pottery", "479.00","/img/productImg/accent.jpg"},
+                        {"ASSEMBLED CERAMIC TABLE LAMP GRAY", "329.00", "pottery", "249.00","/img/productImg/accent.jpg"}
                 };
 
                 List<Product> newProducts = new ArrayList<>();
