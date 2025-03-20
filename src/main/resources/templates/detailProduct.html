@@ -28,11 +28,11 @@
             <div class="productinfor justify-content-between">
                 <div class="mb-5">
                     <p th:text="${product.productName}"></p>
-                    <p th:text="'$' + ${product.price}"></p>
+                    <p class="product-price" th:text="'$' + ${product.price}"></p>
                     <p>
                         On sale: :
                         <span th:if="${product.salePrice != null}">
-                        <b style="color: red;" th:text="'$' + ${product.salePrice}"></b>
+                        <b style="color: #EEEEEE;" th:text="'$' + ${product.salePrice}"></b>
                     </span>
                         <span th:unless="${product.salePrice != null}">
                         <i style="color: #7F8487;">event comming soon...</i>
