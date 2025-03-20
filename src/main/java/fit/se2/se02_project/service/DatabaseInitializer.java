@@ -89,43 +89,43 @@ public class DatabaseInitializer {
             }
             if (categoryRepository.count() == 0) {
                 Category category1 = new Category();
-                category1.setCategoryName("bench");
-                category1.setDescription("Discover chic ceiling lights to elevate your space. Explore modern designs and timeless classics for a touch of elegance in any room.");
+                category1.setCategoryName("chair");
+                category1.setDescription("For a charming and versatile seating option, explore our collection of benches, perfect for adding a touch of elegance to any room.");
                 category1.setIsActive((byte) 1);
                 categoryRepository.save(category1);
                 categoryRepository.flush();
 
                 Category category2 = new Category();
                 category2.setCategoryName("sofa");
-                category2.setDescription("Add warmth and style to your walls...");
+                category2.setDescription("Indulge in comfort and style with our exquisite range of sofas, designed to transform your living room into a haven of relaxation.");
                 category2.setIsActive((byte) 1);
                 categoryRepository.save(category2);
                 categoryRepository.flush();
 
                 Category category3 = new Category();
                 category3.setCategoryName("table");
-                category3.setDescription("Illuminate your space with our exquisite lamps...");
+                category3.setDescription("Discover the ideal table for every occasion, from elegant dining to functional workspaces, each crafted with quality and style in mind.");
                 category3.setIsActive((byte) 1);
                 categoryRepository.save(category3);
                 categoryRepository.flush();
 
                 Category category4 = new Category();
                 category4.setCategoryName("decor");
-                category4.setDescription("Light up your outdoor spaces with style...");
+                category4.setDescription("Elevate your home's aesthetic with our curated selection of decoration pieces, each one a unique expression of artistry and design.\n");
                 category4.setIsActive((byte) 1);
                 categoryRepository.save(category4);
                 categoryRepository.flush();
 
                 Category category5 = new Category();
-                category5.setCategoryName("leather");
-                category5.setDescription("Stay cool and stylish with our range of leather fans...");
+                category5.setCategoryName("bed");
+                category5.setDescription("Experience the ultimate in restful slumber with our luxurious beds, designed to create your personal sanctuary of comfort.");
                 category5.setIsActive((byte) 1);
                 categoryRepository.save(category5);
                 categoryRepository.flush();
 
                 Category category6 = new Category();
-                category6.setCategoryName("pottery");
-                category6.setDescription("Elevate your space with our curated selection of home accents...");
+                category6.setCategoryName("storage");
+                category6.setDescription("Maximize your space and declutter with our innovative storage solutions, blending practicality with sophisticated style.");
                 category6.setIsActive((byte) 1);
                 categoryRepository.save(category6);
                 categoryRepository.flush();
@@ -155,37 +155,37 @@ public class DatabaseInitializer {
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-                        {"MINITABLE", "399.00", "table", "299.00", "/img/productImg/miniTable.jpg"},
-                        {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "decor", "379.00", "/img/productImg/WhiteArchedWallMountedShelf.jpg"},
-                        {"FRANCIS BENCH", "289.00", "bench", "219.00", "/img/productImg/FRANCISBENCH.jpg"},
-                        {"DUCK FLOWER POT", "199.00", "pottery", "149.00", "/img/productImg/DUCKFLOWERPOT.jpg"},
-                        {"DUCK PEN HOLDER", "249.00", "pottery", "189.00", "/img/productImg/DUCKPENHOLDER.jpg"},
-                        {"FLAT CAT VASE", "279.00", "pottery", "209.00", "/img/productImg/FLATCATVASE.jpg"},
-                        {"COUCH", "349.00", "bench", "299.00", "/img/productImg/COUCH.jpg"},
-                        {"ARC COFFEE TABLE", "299.00", "table", "249.00", "/img/productImg/ARCCOFFEETABLE.jpg"},
-                        {"TISSUE HOLDER", "39.00", "pottery", "29.00", "/img/productImg/TISSUEHOLDER.jpg"},
-                        {"QUIRKY WOOD ROBOT", "529.00", "decor", "419.00", "/img/productImg/QUIRKYWOODROBOT.jpg"},
-                        {"WALL CLOCK", "359.00", "decor", "279.00", "/img/productImg/WALLCLOCK.jpg"},
-                        {"WOODEN FLOWER POT", "489.00", "decor", "379.00", "/img/productImg/WOODENFLOWERPOT.jpg"},
-                        {"SIDE TABLE", "369.00", "table", "319.00", "/img/productImg/SIDETABLE.jpg"},
-                        {"BEDSIDE TABLE", "319.00", "table", "269.00", "/img/productImg/BEDSIDETABLE.jpg"},
-                        {"MAKEUP STORAGE SHELF", "379.00", "decor", "329.00", "/img/productImg/MAKEUPSTORAGESHELF.jpg"},
-                        {"DUCK BOOKENDS", "49.00", "decor", "39.00", "/img/productImg/DUCKBOOKENDS.jpg"},
-                        {"KIM SIDE TABLE", "99.00", "table", "79.00", "/img/productImg/KIMSIDETABLE.jpg"},
-                        {"WILD COFFEE TABLE", "89.00", "table", "69.00", "/img/productImg/WILDCOFFEETABLE.jpg"},
-                        {"SANDWICH COOKIES SIMPLE END TABLE", "59.00", "table", "49.00", "/img/productImg/sandwichcookiessimpleendtable.jpg"},
-                        {"WHITE COFFEE TABLE", "79.00", "table", "59.00", "/img/productImg/WHITECOFFEETABLE.jpg"},
-                        {"COMBINATION OF HUMANS AND PET NESTS", "369.00", "leather", "289.00", "/img/productImg/COMBINATIONOFHUMANSANDPETNESTS.jpg"},
-                        {"CAT BEDS", "389.00", "leather", "339.00", "/img/productImg/CATBEDS.jpg"},
-                        {"SUN FLOWER CAT BED", "49.00", "leather", "39.00", "/img/productImg/SUNFLOWERCATBED.jpg"},
-                        {"JELLYCAT SOFA", "79.00", "sofa", "59.00", "/img/productImg/JELLYCATSOFA.jpg"},
-                        {"ARTISTIC ONYX MARBLE CONSOLE TABLE", "69.00", "table", "49.00", "/img/productImg/ArtisticOnyxMarbleConsoleTable.jpg"},
-                        {"CLOUD AND ECLIPSE LAMP", "79.00", "decor", "59.00", "/img/productImg/CLOUDANDECLIPSELAMP.jpg"},
-                        {"SET OF 4 SMALL FLOWER VASE", "549.00", "pottery", "439.00", "/img/productImg/SMALLFLOWERVASE.jpg"},
-                        {"CREAM-COLORED METAL SOFA", "69.00", "sofa", "49.00", "/img/productImg/CREAM-COLOREDMETALSOFA.jpg"},
-                        {"NORDIC COFFEE TABLE", "69.00", "table", "49.00", "/img/productImg/NORDICCOFFEETABLE.jpg"},
-                        {"MUGS COFFEE CUP SET", "599.00", "pottery", "479.00", "/img/productImg/MUGSCOFFEECUPSET.jpg"},
-                        {"BUNNY FLOOR MIRROR", "329.00", "decor", "249.00", "/img/productImg/BUNNYFLOORMIRROR.jpg"}};
+                        {"Simple brown leather sofa", "399.00", "sofa", "299.00", "/img/productImg/Sofa01.jpg"},
+                        {"Patterned leather sofa", "499.00", "sofa", "379.00", "/img/productImg/Sofa02.jpg"},
+                        {"Crocodile leather sofa", "289.00", "sofa", "219.00", "/img/productImg/Sofa03.jpg"},
+                        {"European pattern sofa", "199.00", "sofa", "149.00", "/img/productImg/Sofa04.jpg"},
+                        {"Asian pattern sofa", "249.00", "sofa", "189.00", "/img/productImg/Sofa05.jpg"},
+                        {"Royal sofa", "279.00", "sofa", "209.00", "/img/productImg/Sofa06.jpg"},
+                        {"Royal bed", "349.00", "bed", "299.00", "/img/productImg/bed.jpg"},
+                        {"Simple black and white bed", "299.00", "bed", "249.00", "/img/productImg/bed2.png"},
+                        {"Black queen bed", "39.00", "bed", "29.00", "/img/productImg/bed3.png"},
+                        {"King size bed", "529.00", "bed", "419.00", "/img/productImg/bed4.png"},
+                        {"Silky bed", "359.00", "bed", "279.00", "/img/productImg/bed5.png"},
+                        {"Low back chair", "489.00", "chair", "379.00", "/img/productImg/chair (1).jpg"},
+                        {"Clove wood dining chair", "369.00", "chair", "319.00", "/img/productImg/chair (2).jpg"},
+                        {"Relaxing king chair", "319.00", "chair", "269.00", "/img/productImg/chair (3).jpg"},
+                        {"Simple dining chair", "379.00", "chair", "329.00", "/img/productImg/chair (4).jpg"},
+                        {"Straight back chair", "49.00", "chair", "39.00", "/img/productImg/chair (5).jpg"},
+                        {"Stylized plastic chair", "99.00", "chair", "79.00", "/img/productImg/chair (6).jpg"},
+                        {"Modern sandalwood glass cabinet", "89.00", "storage", "69.00", "/img/productImg/storage (1).jpg"},
+                        {"Vietnamese antique wooden cabinets", "59.00", "storage", "49.00", "/img/productImg/storage (2).jpg"},
+                        {"Stylized jewelry cabinet", "79.00", "storage", "59.00", "/img/productImg/storage (3).jpg"},
+                        {"Wardrobe of the future", "369.00", "storage", "289.00", "/img/productImg/storage (4).jpg"},
+                        {"Simple wardrobe", "389.00", "storage", "339.00", "/img/productImg/storage (5).jpg"},
+                        {"Royal wall pendulum clock", "49.00", "decor", "39.00", "/img/productImg/decor.jpg"},
+                        {"Full cover headboard painting", "79.00", "decor", "59.00", "/img/productImg/decor2.png"},
+                        {"Small flower vase", "69.00", "decor", "49.00", "/img/productImg/decor3.png"},
+                        {"Roman wall clock", "79.00", "decor", "59.00", "/img/productImg/decor4.jpg"},
+                        {"Large pendulum clock", "549.00", "decor", "439.00", "/img/productImg/decor.png"},
+                        {"Large dining table", "69.00", "table", "49.00", "/img/productImg/table.jpg"},
+                        {"Small living room table", "69.00", "table", "49.00", "/img/productImg/table2.png"},
+                        {"Ebony coffee table", "599.00", "table", "479.00", "/img/productImg/table3.jpg"},
+                        {"single leg table", "329.00", "table", "249.00", "/img/productImg/table4.jpg"}};
 
                 List<Product> newProducts = new ArrayList<>();
                 for (String[] p : products) {

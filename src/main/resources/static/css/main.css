@@ -1326,22 +1326,22 @@ section {
 .card-body {
     background-color: #222;
     padding: 8px; 
-    height: 120px; /* Đặt chiều cao cố định thay vì min-height */
-    display: flex; /* Sử dụng flex để phân bố đều các phần tử */
-    flex-direction: column; /* Sắp xếp theo cột */
-    justify-content: space-between; /* Phân bố đều khoảng cách */
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-title {
     color: #EEEEEE;
-    margin-top: 4px; /* Khoảng cách giữa ảnh và tên sản phẩm */
-    margin-bottom: 2px; /* Giảm khoảng cách giữa tên sản phẩm và giá */
-    line-height: 1.2; /* Đảm bảo chiều cao dòng đồng nhất */
-    max-height: 40px; /* Giới hạn chiều cao tối đa của tên sản phẩm */
-    overflow: hidden; /* Ẩn phần text vượt quá */
-    text-overflow: ellipsis; /* Thêm dấu ... nếu text bị cắt */
+    margin-top: 4px;
+    margin-bottom: 2px;
+    line-height: 1.2;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Giới hạn tối đa 2 dòng */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -1350,18 +1350,18 @@ section {
     font-style: italic;
     font-size: 12px;
     position: relative;
-    line-height: 1.2; /* Điều chỉnh chiều cao dòng cho tự nhiên */
-    margin-top: 0; /* Đảm bảo không có khoảng cách thừa phía trên */
-    margin-bottom: 2px; /* Giảm khoảng cách giữa giá và icon giỏ hàng */
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 2px;
 }
 
 .card-price span {
-    display: inline; /* Giá gốc hiển thị inline */
+    display: inline;
 }
 
 .card-price span:first-child {
-    text-decoration: line-through; /* Gạch ngang giá gốc */
-    color: #999; /* Màu xám cho giá gốc */
+    text-decoration: line-through;
+    color: #999;
 }
 
 .card-sale-price {
@@ -1373,8 +1373,8 @@ section {
 }
 
 .shopcard .card-price > .sale {
-    display: block !important; /* Giá khuyến mãi xuống dòng */
-    margin-top: 4px !important; /* Khoảng cách giữa giá gốc và giá khuyến mãi */
+    display: block !important;
+    margin-top: 4px !important;
 }
 
 .card-price > .sale {
@@ -1382,12 +1382,12 @@ section {
 }
 
 .card-price > .sale::after {
-    display: none; /* Bỏ pseudo-element */
+    display: none;
 }
 
 .card-body .bi-cart {
     display: block;
-    margin: 0 auto; /* Căn giữa icon giỏ hàng */
+    margin: 0 auto;
 }
 
 .card-body .bi-cart, .productinfor .bi-cart{
