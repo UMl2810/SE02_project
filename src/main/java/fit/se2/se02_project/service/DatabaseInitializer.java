@@ -59,46 +59,38 @@ public class DatabaseInitializer {
                 roleRepository.save(userRole);
             }
 
-            // Insert users if not present
             if (userRepository.count() == 0) {
-                Role adminRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("Admin"))
-                        .findFirst().orElse(null);
-                Role userRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("User"))
-                        .findFirst().orElse(null);
+                Role adminRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("Admin")).findFirst().orElse(null);
+                Role userRole = roleRepository.findAll().stream().filter(role -> role.getName().equals("User")).findFirst().orElse(null);
 
                 User admin = new User();
                 admin.setUsername("admin");
-                admin.setPassword(
-                        "263fec58861449aacc1c328a4aff64aff4c62df4a2d50b3f207fa89b6e242c9aa778e7a8baeffef85b6ca6d2e7dc16ff0a760d59c13c238f6bcdc32f8ce9cc62"); // Hash
-                                                                                                                                                             // mật
-                                                                                                                                                             // khẩu
-                                                                                                                                                             // nếu
-                                                                                                                                                             // cần
-                admin.setEmail("chicandlighting@gmail.com");
+                admin.setPassword("263fec58861449aacc1c328a4aff64aff4c62df4a2d50b3f207fa89b6e242c9aa778e7a8baeffef85b6ca6d2e7dc16ff0a760d59c13c238f6bcdc32f8ce9cc62");
+                admin.setEmail("no.replyunidecor@gmail.com");
+                admin.setIsActive((byte) 1);
                 admin.setRole(adminRole);
                 userRepository.save(admin);
 
                 User user1 = new User();
-                user1.setUsername("hoangson123");
-                user1.setPassword(
-                        "e13efc991a9bf44bbb4da87cdbb725240184585ccaf270523170e008cf2a3b85f45f86c3da647f69780fb9e971caf5437b3d06d418355a68c9760c70a31d05c7");
-                user1.setEmail("sonnguyen10112003@gmail.com");
+                user1.setUsername("cuong_test");
+                user1.setPassword("e13efc991a9bf44bbb4da87cdbb725240184585ccaf270523170e008cf2a3b85f45f86c3da647f69780fb9e971caf5437b3d06d418355a68c9760c70a31d05c7");
+                user1.setEmail("test@gmail.com");
+                user1.setIsActive((byte) 1);
                 user1.setRole(userRole);
                 userRepository.save(user1);
 
                 User user2 = new User();
-                user2.setUsername("hoangson1234");
-                user2.setPassword(
-                        "e13efc991a9bf44bbb4da87cdbb725240184585ccaf270523170e008cf2a3b85f45f86c3da647f69780fb9e971caf5437b3d06d418355a68c9760c70a31d05c7");
-                user2.setEmail("sonhoang10112003@gmail.com");
+                user2.setUsername("thaitest");
+                user2.setPassword("e13efc991a9bf44bbb4da87cdbb725240184585ccaf270523170e008cf2a3b85f45f86c3da647f69780fb9e971caf5437b3d06d418355a68c9760c70a31d05c7");
+                user2.setEmail("thai@gmail.com");
+                user2.setIsActive((byte) 1);
                 user2.setRole(userRole);
                 userRepository.save(user2);
             }
             if (categoryRepository.count() == 0) {
                 Category category1 = new Category();
                 category1.setCategoryName("bench");
-                category1.setDescription(
-                        "Discover chic ceiling lights to elevate your space. Explore modern designs and timeless classics for a touch of elegance in any room.");
+                category1.setDescription("Discover chic ceiling lights to elevate your space. Explore modern designs and timeless classics for a touch of elegance in any room.");
                 category1.setIsActive((byte) 1);
                 categoryRepository.save(category1);
                 categoryRepository.flush();
@@ -158,53 +150,42 @@ public class DatabaseInitializer {
             }
 
             if (productRepository.count() < 32) {
-                Map<String, Category> categories = categoryRepository.findAll().stream()
-                        .collect(Collectors.toMap(Category::getCategoryName, category -> category));
+                Map<String, Category> categories = categoryRepository.findAll().stream().collect(Collectors.toMap(Category::getCategoryName, category -> category));
 
                 Productstatus saleStatus = getSale();
 
                 String[][] products = {
-                        { "MINITABLE", "399.00", "table", "299.00", "/img/productImg/miniTable.jpg" },
-                        { "WHITE ARCHED WALL MOUNTED SHELF", "499.00", "decor", "379.00",
-                                "/img/productImg/WhiteArchedWallMountedShelf.jpg" },
-                        { "FRANCIS BENCH", "289.00", "bench", "219.00", "/img/productImg/FRANCISBENCH.jpg" },
-                        { "DUCK FLOWER POT", "199.00", "pottery", "149.00", "/img/productImg/DUCKFLOWERPOT.jpg" },
-                        { "DUCK PEN HOLDER", "249.00", "pottery", "189.00", "/img/productImg/DUCKPENHOLDER.jpg" },
-                        { "FLAT CAT VASE", "279.00", "pottery", "209.00", "/img/productImg/FLATCATVASE.jpg" },
-                        { "COUCH", "349.00", "bench", "299.00", "/img/productImg/COUCH.jpg" },
-                        { "ARC COFFEE TABLE", "299.00", "table", "249.00", "/img/productImg/ARCCOFFEETABLE.jpg" },
-                        { "TISSUE HOLDER", "39.00", "pottery", "29.00", "/img/productImg/TISSUEHOLDER.jpg" },
-                        { "QUIRKY WOOD ROBOT", "529.00", "decor", "419.00", "/img/productImg/QUIRKYWOODROBOT.jpg" },
-                        { "WALL CLOCK", "359.00", "decor", "279.00", "/img/productImg/WALLCLOCK.jpg" },
-                        { "WOODEN FLOWER POT", "489.00", "decor", "379.00", "/img/productImg/WOODENFLOWERPOT.jpg" },
-                        { "SIDE TABLE", "369.00", "table", "319.00", "/img/productImg/SIDETABLE.jpg" },
-                        { "BEDSIDE TABLE", "319.00", "table", "269.00", "/img/productImg/BEDSIDETABLE.jpg" },
-                        { "MAKEUP STORAGE SHELF", "379.00", "decor", "329.00",
-                                "/img/productImg/MAKEUPSTORAGESHELF.jpg" },
-                        { "DUCK BOOKENDS", "49.00", "decor", "39.00", "/img/productImg/DUCKBOOKENDS.jpg" },
-                        { "KIM SIDE TABLE", "99.00", "table", "79.00", "/img/productImg/KIMSIDETABLE.jpg" },
-                        { "WILD COFFEE TABLE", "89.00", "table", "69.00", "/img/productImg/WILDCOFFEETABLE.jpg" },
-                        { "SANDWICH COOKIES SIMPLE END TABLE", "59.00", "table", "49.00",
-                                "/img/productImg/sandwichcookiessimpleendtable.jpg" },
-                        { "WHITE COFFEE TABLE", "79.00", "table", "59.00", "/img/productImg/WHITECOFFEETABLE.jpg" },
-                        { "COMBINATION OF HUMANS AND PET NESTS", "369.00", "leather", "289.00",
-                                "/img/productImg/COMBINATIONOFHUMANSANDPETNESTS.jpg" },
-                        { "CAT BEDS", "389.00", "leather", "339.00", "/img/productImg/CATBEDS.jpg" },
-                        { "SUN FLOWER CAT BED", "49.00", "leather", "39.00", "/img/productImg/SUNFLOWERCATBED.jpg" },
-                        { "JELLYCAT SOFA", "79.00", "sofa", "59.00", "/img/productImg/JELLYCATSOFA.jpg" },
-                        { "ARTISTIC ONYX MARBLE CONSOLE TABLE", "69.00", "table", "49.00",
-                                "/img/productImg/ArtisticOnyxMarbleConsoleTable.jpg" },
-                        { "CLOUD AND ECLIPSE LAMP", "79.00", "decor", "59.00",
-                                "/img/productImg/CLOUDANDECLIPSELAMP.jpg" },
-                        { "SET OF 4 SMALL FLOWER VASE", "549.00", "pottery", "439.00",
-                                "/img/productImg/SMALLFLOWERVASE.jpg" },
-                        { "CREAM-COLORED METAL SOFA", "69.00", "sofa", "49.00",
-                                "/img/productImg/CREAM-COLOREDMETALSOFA.jpg" },
-                        { "NORDIC COFFEE TABLE", "69.00", "table", "49.00", "/img/productImg/NORDICCOFFEETABLE.jpg" },
-                        { "MUGS COFFEE CUP SET", "599.00", "pottery", "479.00",
-                                "/img/productImg/MUGSCOFFEECUPSET.jpg" },
-                        { "BUNNY FLOOR MIRROR", "329.00", "decor", "249.00", "/img/productImg/BUNNYFLOORMIRROR.jpg" }
-                };
+                        {"MINITABLE", "399.00", "table", "299.00", "/img/productImg/miniTable.jpg"},
+                        {"WHITE ARCHED WALL MOUNTED SHELF", "499.00", "decor", "379.00", "/img/productImg/WhiteArchedWallMountedShelf.jpg"},
+                        {"FRANCIS BENCH", "289.00", "bench", "219.00", "/img/productImg/FRANCISBENCH.jpg"},
+                        {"DUCK FLOWER POT", "199.00", "pottery", "149.00", "/img/productImg/DUCKFLOWERPOT.jpg"},
+                        {"DUCK PEN HOLDER", "249.00", "pottery", "189.00", "/img/productImg/DUCKPENHOLDER.jpg"},
+                        {"FLAT CAT VASE", "279.00", "pottery", "209.00", "/img/productImg/FLATCATVASE.jpg"},
+                        {"COUCH", "349.00", "bench", "299.00", "/img/productImg/COUCH.jpg"},
+                        {"ARC COFFEE TABLE", "299.00", "table", "249.00", "/img/productImg/ARCCOFFEETABLE.jpg"},
+                        {"TISSUE HOLDER", "39.00", "pottery", "29.00", "/img/productImg/TISSUEHOLDER.jpg"},
+                        {"QUIRKY WOOD ROBOT", "529.00", "decor", "419.00", "/img/productImg/QUIRKYWOODROBOT.jpg"},
+                        {"WALL CLOCK", "359.00", "decor", "279.00", "/img/productImg/WALLCLOCK.jpg"},
+                        {"WOODEN FLOWER POT", "489.00", "decor", "379.00", "/img/productImg/WOODENFLOWERPOT.jpg"},
+                        {"SIDE TABLE", "369.00", "table", "319.00", "/img/productImg/SIDETABLE.jpg"},
+                        {"BEDSIDE TABLE", "319.00", "table", "269.00", "/img/productImg/BEDSIDETABLE.jpg"},
+                        {"MAKEUP STORAGE SHELF", "379.00", "decor", "329.00", "/img/productImg/MAKEUPSTORAGESHELF.jpg"},
+                        {"DUCK BOOKENDS", "49.00", "decor", "39.00", "/img/productImg/DUCKBOOKENDS.jpg"},
+                        {"KIM SIDE TABLE", "99.00", "table", "79.00", "/img/productImg/KIMSIDETABLE.jpg"},
+                        {"WILD COFFEE TABLE", "89.00", "table", "69.00", "/img/productImg/WILDCOFFEETABLE.jpg"},
+                        {"SANDWICH COOKIES SIMPLE END TABLE", "59.00", "table", "49.00", "/img/productImg/sandwichcookiessimpleendtable.jpg"},
+                        {"WHITE COFFEE TABLE", "79.00", "table", "59.00", "/img/productImg/WHITECOFFEETABLE.jpg"},
+                        {"COMBINATION OF HUMANS AND PET NESTS", "369.00", "leather", "289.00", "/img/productImg/COMBINATIONOFHUMANSANDPETNESTS.jpg"},
+                        {"CAT BEDS", "389.00", "leather", "339.00", "/img/productImg/CATBEDS.jpg"},
+                        {"SUN FLOWER CAT BED", "49.00", "leather", "39.00", "/img/productImg/SUNFLOWERCATBED.jpg"},
+                        {"JELLYCAT SOFA", "79.00", "sofa", "59.00", "/img/productImg/JELLYCATSOFA.jpg"},
+                        {"ARTISTIC ONYX MARBLE CONSOLE TABLE", "69.00", "table", "49.00", "/img/productImg/ArtisticOnyxMarbleConsoleTable.jpg"},
+                        {"CLOUD AND ECLIPSE LAMP", "79.00", "decor", "59.00", "/img/productImg/CLOUDANDECLIPSELAMP.jpg"},
+                        {"SET OF 4 SMALL FLOWER VASE", "549.00", "pottery", "439.00", "/img/productImg/SMALLFLOWERVASE.jpg"},
+                        {"CREAM-COLORED METAL SOFA", "69.00", "sofa", "49.00", "/img/productImg/CREAM-COLOREDMETALSOFA.jpg"},
+                        {"NORDIC COFFEE TABLE", "69.00", "table", "49.00", "/img/productImg/NORDICCOFFEETABLE.jpg"},
+                        {"MUGS COFFEE CUP SET", "599.00", "pottery", "479.00", "/img/productImg/MUGSCOFFEECUPSET.jpg"},
+                        {"BUNNY FLOOR MIRROR", "329.00", "decor", "249.00", "/img/productImg/BUNNYFLOORMIRROR.jpg"}};
 
                 List<Product> newProducts = new ArrayList<>();
                 for (String[] p : products) {
@@ -250,36 +231,24 @@ public class DatabaseInitializer {
                 orderStatusRepository.save(waitForConfirmation);
             }
             if (orderRepository.count() == 0) {
-                User user1 = userRepository.findAll().stream()
-                        .filter(user -> user.getUsername().equals("hoangson123"))
-                        .findFirst().orElse(null);
-                User user2 = userRepository.findAll().stream()
-                        .filter(user -> user.getUsername().equals("hoangson1234"))
-                        .findFirst().orElse(null);
+                User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("cuong_test")).findFirst().orElse(null);
+                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("cuong_test")).findFirst().orElse(null);
 
-                Map<String, Orderstatus> statusMap = orderStatusRepository.findAll().stream()
-                        .collect(Collectors.toMap(Orderstatus::getName, status -> status));
+                Map<String, Orderstatus> statusMap = orderStatusRepository.findAll().stream().collect(Collectors.toMap(Orderstatus::getName, status -> status));
 
                 List<Order> orders = Arrays.asList(
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-05 10:01:52"),
-                        createOrder(user1, statusMap.get("Canceled"), "2024-04-05 15:15:01"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-03-21 11:00:00"),
+                        createOrder(user1, statusMap.get("Canceled"), "2025-03-21 12:00:00"),
                         createOrder(user1, statusMap.get("Canceled"), "2024-04-06 09:39:20"),
-                        createOrder(user1, statusMap.get("Accomplished"), "2024-04-08 03:15:23"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-08 03:17:06"),
+                        createOrder(user1, statusMap.get("Accomplished"), "2025-03-21 22:00:00"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-03-21 23:00:00"),
                         createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-08 03:18:23"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-12 06:04:34",
-                                "Giao gio hanh chinh"),
-                        createOrder(user1, statusMap.get("Wait for delivery"), "2024-04-12 06:07:56",
-                                "Giao gio hanh chinh"),
-                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-13 09:37:24",
-                                "Giao gio hanh chinh"),
-                        createOrder(user2, statusMap.get("Canceled"), "2024-05-13 02:43:56", "Nguyen Duc", "Son",
-                                "Yen Phong"),
-                        createOrder(user2, statusMap.get("Wait for confirmation"), "2024-05-13 02:47:35", "Nguyen Duc",
-                                "Son", "Yen Phong"),
-                        createOrder(user1, statusMap.get("Canceled"), "2024-05-14 02:29:38", "Nguyen Duc", "Son",
-                                "Yen Phong"));
-
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2024-04-12 06:04:34", "Giao gio hanh chinh"),
+                        createOrder(user1, statusMap.get("Wait for delivery"), "2025-04-12 06:07:56", "office hours"),
+                        createOrder(user1, statusMap.get("Wait for confirmation"), "2025-04-13 09:37:24", "office hours"),
+                        createOrder(user2, statusMap.get("Canceled"), "2025-05-13 02:43:56", "Vu Ngoc", "Cuong", "Ha Noi"),
+                        createOrder(user2, statusMap.get("Wait for confirmation"), "2025-05-13 02:47:35", "Vu Ngoc", "Cuong", "Ha Noi"),
+                        createOrder(user1, statusMap.get("Canceled"), "2025-05-14 02:29:38", "Vu Ngoc", "Cuong", "Ha Noi"));
                 orderRepository.saveAll(orders);
             }
             // Insert payments if not present
@@ -309,10 +278,8 @@ public class DatabaseInitializer {
                 Order order11 = orderRepository.findById(11L).orElse(null);
                 Order order12 = orderRepository.findById(12L).orElse(null);
 
-                Payment cod = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("COD"))
-                        .findFirst().orElse(null);
-                Payment payAtShop = paymentRepository.findAll().stream()
-                        .filter(payment -> payment.getName().equals("Pay at shop")).findFirst().orElse(null);
+                Payment cod = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("COD")).findFirst().orElse(null);
+                Payment payAtShop = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("Pay at shop")).findFirst().orElse(null);
 
                 Transaction transaction1 = new Transaction();
                 transaction1.setOrder(order1);
@@ -403,91 +370,76 @@ public class DatabaseInitializer {
                 Feedback feedback1 = new Feedback();
                 feedback1.setComment("Very satisfied!");
                 feedback1.setRate((short) 3);
-                feedback1.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
-                feedback1.setEmail("michael@gmail.com");
-                feedback1.setName("Michael");
+                feedback1.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+                feedback1.setEmail("Cuong@gmail.com");
+                feedback1.setName("Cuong");
                 feedbackRepository.save(feedback1);
                 feedbackRepository.flush();
 
                 Feedback feedback2 = new Feedback();
                 feedback2.setComment("Great selection and fast shipping!");
                 feedback2.setRate((short) 3);
-                feedback2.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
-                feedback2.setEmail("emily@gmail.com");
-                feedback2.setName("Emily");
+                feedback2.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+                feedback2.setEmail("Thai@gmail.com");
+                feedback2.setName("Thai");
                 feedbackRepository.save(feedback2);
                 feedbackRepository.flush();
 
                 Feedback feedback3 = new Feedback();
                 feedback3.setComment("Highly recommend!");
                 feedback3.setRate((short) 3);
-                feedback3.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
-                feedback3.setEmail("sarah@gmail.com");
-                feedback3.setName("Sarah");
+                feedback3.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+                feedback3.setEmail("Cong@gmail.com");
+                feedback3.setName("Cong");
                 feedbackRepository.save(feedback3);
                 feedbackRepository.flush();
 
                 Feedback feedback4 = new Feedback();
-                feedback4.setComment("Very good");
+                feedback4.setComment("greatttttt");
                 feedback4.setRate((short) 3);
-                feedback4.setCreatedAt(Timestamp.valueOf("2024-04-02 16:40:06"));
-                feedback4.setEmail("j97@gmail.com");
-                feedback4.setName("Jack");
+                feedback4.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+                feedback4.setEmail("vncuong2810@gmail.com");
+                feedback4.setName("Cuong");
                 feedbackRepository.save(feedback4);
                 feedbackRepository.flush();
             }
             // Insert carts if not present
             if (cartRepository.count() == 0) {
-                User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson123"))
-                        .findFirst().orElse(null);
-                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("hoangson1234"))
-                        .findFirst().orElse(null);
-                User user3 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("admin"))
-                        .findFirst().orElse(null);
+                User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("cuong_test")).findFirst().orElse(null);
+                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("thaitest")).findFirst().orElse(null);
+                User user3 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("admin")).findFirst().orElse(null);
 
                 Cart cart1 = new Cart();
                 cart1.setUser(user2);
-                cart1.setCreatedAt(Timestamp.valueOf("2024-04-05 04:31:08"));
+                cart1.setCreatedAt(Timestamp.valueOf("2025-03-05 04:31:08"));
                 cartRepository.save(cart1);
                 cartRepository.flush();
 
                 Cart cart2 = new Cart();
                 cart2.setUser(user1);
-                cart2.setCreatedAt(Timestamp.valueOf("2024-04-05 07:29:13"));
+                cart2.setCreatedAt(Timestamp.valueOf("2025-03-11 07:29:13"));
                 cartRepository.save(cart2);
                 cartRepository.flush();
 
                 Cart cart3 = new Cart();
                 cart3.setUser(user3);
-                cart3.setCreatedAt(Timestamp.valueOf("2024-05-13 02:02:24"));
+                cart3.setCreatedAt(Timestamp.valueOf("2025-03-13 02:02:24"));
                 cartRepository.save(cart3);
                 cartRepository.flush();
             }
             if (orderDetailRepository.count() == 0) {
                 List<Orderdetail> orderDetails = Arrays.asList(
-                        new Orderdetail(productRepository.findById(3L).orElse(null),
-                                orderRepository.findById(13L).orElse(null), 2, new BigDecimal("598.00")),
-                        new Orderdetail(productRepository.findById(25L).orElse(null),
-                                orderRepository.findById(13L).orElse(null), 3, new BigDecimal("2397.00")),
-                        new Orderdetail(productRepository.findById(41L).orElse(null),
-                                orderRepository.findById(14L).orElse(null), 3, new BigDecimal("119.85")),
-                        new Orderdetail(productRepository.findById(16L).orElse(null),
-                                orderRepository.findById(15L).orElse(null), 2, new BigDecimal("538.00")),
-                        new Orderdetail(productRepository.findById(19L).orElse(null),
-                                orderRepository.findById(15L).orElse(null), 3, new BigDecimal("1197.00")),
-                        new Orderdetail(productRepository.findById(15L).orElse(null),
-                                orderRepository.findById(15L).orElse(null), 2, new BigDecimal("198.00")),
-                        new Orderdetail(productRepository.findById(15L).orElse(null),
-                                orderRepository.findById(16L).orElse(null), 1, new BigDecimal("99.00")),
-                        new Orderdetail(productRepository.findById(8L).orElse(null),
-                                orderRepository.findById(17L).orElse(null), 3, new BigDecimal("1347.00")),
-                        new Orderdetail(productRepository.findById(3L).orElse(null),
-                                orderRepository.findById(18L).orElse(null), 1, new BigDecimal("299.00")),
-                        new Orderdetail(productRepository.findById(13L).orElse(null),
-                                orderRepository.findById(18L).orElse(null), 2, new BigDecimal("458.00")));
-
+                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(13L).orElse(null), 2, new BigDecimal("598.00")),
+                        new Orderdetail(productRepository.findById(25L).orElse(null), orderRepository.findById(13L).orElse(null), 3, new BigDecimal("2397.00")),
+                        new Orderdetail(productRepository.findById(41L).orElse(null), orderRepository.findById(14L).orElse(null), 3, new BigDecimal("119.85")),
+                        new Orderdetail(productRepository.findById(16L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("538.00")),
+                        new Orderdetail(productRepository.findById(19L).orElse(null), orderRepository.findById(15L).orElse(null), 3, new BigDecimal("1197.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("198.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(16L).orElse(null), 1, new BigDecimal("99.00")),
+                        new Orderdetail(productRepository.findById(8L).orElse(null), orderRepository.findById(17L).orElse(null), 3, new BigDecimal("1347.00")),
+                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(18L).orElse(null), 1, new BigDecimal("299.00")),
+                        new Orderdetail(productRepository.findById(13L).orElse(null), orderRepository.findById(18L).orElse(null), 2, new BigDecimal("458.00")));
                 orderDetailRepository.saveAll(orderDetails);
-                System.out.println("Seeded order details successfully!");
             }
         } finally {
 
@@ -502,13 +454,11 @@ public class DatabaseInitializer {
         return createOrder(user, status, date, "Vũ", "Cường", "Thai Nguyen", "0365473859", note);
     }
 
-    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName,
-            String address) {
+    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName, String address) {
         return createOrder(user, status, date, firstName, lastName, address, "0365473859", null);
     }
 
-    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName,
-            String address, String phone, String note) {
+    private Order createOrder(User user, Orderstatus status, String date, String firstName, String lastName, String address, String phone, String note) {
         Order order = new Order();
         order.setUser(user);
         order.setOrderstatus(status);
@@ -522,8 +472,6 @@ public class DatabaseInitializer {
     }
 
     private Productstatus getSale() {
-        return productStatusRepository.findAll().stream()
-                .filter(status -> status.getName().equals("sale"))
-                .findFirst().orElse(null);
+        return productStatusRepository.findAll().stream().filter(status -> status.getName().equals("sale")).findFirst().orElse(null);
     }
 }

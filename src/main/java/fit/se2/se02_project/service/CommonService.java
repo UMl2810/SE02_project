@@ -79,13 +79,23 @@ public class CommonService {
     }
 
     public void sendEmail(String subject, String body, String to) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromMail);
-        message.setTo(to);
-        message.setText(body);
-        message.setSubject(subject);
+        try {
+            MimeMessage message = emailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-        emailSender.send(message);
+            helper.setFrom(fromMail);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(body, true);
+
+            message.addHeader("X-Priority", "1"); // Độ ưu tiên cao nhất
+            message.addHeader("Importance", "high"); // Email quan trọng
+            message.addHeader("X-GM-LABELS", "\\Important"); // Gmail có thể đánh dấu là quan trọng
+
+            emailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
 
     public String createToken(User user) {

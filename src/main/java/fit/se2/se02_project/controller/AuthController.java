@@ -166,7 +166,7 @@ public class AuthController {
             newUser.setVerifyCode(verifyCode);
             userRepository.save(newUser);
 
-            String body = String.format("Your code verify is: %s", newUser.getVerifyCode());
+            String body = String.format("Verify Code: %s", newUser.getVerifyCode());
             commonService.sendEmail("Verify Email", body, newUser.getEmail());
             return "redirect:/auth/verify";
         }
