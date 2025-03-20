@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div layout:fragment="content">
+<div layout:fragment="content" id="cart">
     <div th:if="${#lists.isEmpty(products)}" id="cart">
         <div class="d-flex flex-column align-items-center my-5">
             <b>(0)</b>
