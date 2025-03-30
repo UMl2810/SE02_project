@@ -232,7 +232,7 @@ public class DatabaseInitializer {
             }
             if (orderRepository.count() == 0) {
                 User user1 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("cuong_test")).findFirst().orElse(null);
-                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("cuong_test")).findFirst().orElse(null);
+                User user2 = userRepository.findAll().stream().filter(user -> user.getUsername().equals("thaitest")).findFirst().orElse(null);
 
                 Map<String, Orderstatus> statusMap = orderStatusRepository.findAll().stream().collect(Collectors.toMap(Orderstatus::getName, status -> status));
 
@@ -250,6 +250,7 @@ public class DatabaseInitializer {
                         createOrder(user2, statusMap.get("Wait for confirmation"), "2025-05-13 02:47:35", "Vu Ngoc", "Cuong", "Ha Noi"),
                         createOrder(user1, statusMap.get("Canceled"), "2025-05-14 02:29:38", "Vu Ngoc", "Cuong", "Ha Noi"));
                 orderRepository.saveAll(orders);
+                orderRepository.flush();
             }
             // Insert payments if not present
             if (paymentRepository.count() == 0) {
@@ -265,106 +266,43 @@ public class DatabaseInitializer {
             }
 
             if (transactionRepository.count() == 0) {
-                Order order1 = orderRepository.findById(1L).orElse(null);
-                Order order2 = orderRepository.findById(2L).orElse(null);
-                Order order3 = orderRepository.findById(3L).orElse(null);
-                Order order4 = orderRepository.findById(4L).orElse(null);
-                Order order5 = orderRepository.findById(5L).orElse(null);
-                Order order6 = orderRepository.findById(6L).orElse(null);
-                Order order7 = orderRepository.findById(7L).orElse(null);
-                Order order8 = orderRepository.findById(8L).orElse(null);
-                Order order9 = orderRepository.findById(9L).orElse(null);
-                Order order10 = orderRepository.findById(10L).orElse(null);
-                Order order11 = orderRepository.findById(11L).orElse(null);
-                Order order12 = orderRepository.findById(12L).orElse(null);
+                List<Order> orders = orderRepository.findAll(); // Lấy tất cả order từ DB
+                Map<Long, Order> orderMap = orders.stream().collect(Collectors.toMap(Order::getId, order -> order));
 
-                Payment cod = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("COD")).findFirst().orElse(null);
-                Payment payAtShop = paymentRepository.findAll().stream().filter(payment -> payment.getName().equals("Pay at shop")).findFirst().orElse(null);
+                Payment cod = paymentRepository.findAll().stream()
+                        .filter(payment -> payment.getName().equals("COD"))
+                        .findFirst().orElse(null);
 
-                Transaction transaction1 = new Transaction();
-                transaction1.setOrder(order1);
-                transaction1.setPayment(payAtShop);
-                transaction1.setTotal(new BigDecimal("2995.00"));
-                transactionRepository.save(transaction1);
-                transactionRepository.flush();
+                Payment payAtShop = paymentRepository.findAll().stream()
+                        .filter(payment -> payment.getName().equals("Pay at shop"))
+                        .findFirst().orElse(null);
 
-                Transaction transaction2 = new Transaction();
-                transaction2.setOrder(order2);
-                transaction2.setPayment(payAtShop);
-                transaction2.setTotal(new BigDecimal("3114.85"));
-                transactionRepository.save(transaction2);
-                transactionRepository.flush();
+                List<Transaction> transactions = new ArrayList<>();
 
-                Transaction transaction3 = new Transaction();
-                transaction3.setOrder(order3);
-                transaction3.setPayment(cod);
-                transaction3.setTotal(new BigDecimal("5047.85"));
-                transactionRepository.save(transaction3);
-                transactionRepository.flush();
+                // Danh sách tổng tiền
+                BigDecimal[] totals = {
+                        new BigDecimal("2995.00"), new BigDecimal("3114.85"), new BigDecimal("5047.85"),
+                        new BigDecimal("5146.85"), new BigDecimal("6493.85"), new BigDecimal("7250.85"),
+                        new BigDecimal("9045.85"), new BigDecimal("9845.85"), new BigDecimal("10952.85"),
+                        new BigDecimal("1526.00"), new BigDecimal("2766.00"), new BigDecimal("897.00")
+                };
 
-                Transaction transaction4 = new Transaction();
-                transaction4.setOrder(order4);
-                transaction4.setPayment(cod);
-                transaction4.setTotal(new BigDecimal("5146.85"));
-                transactionRepository.save(transaction4);
-                transactionRepository.flush();
+                for (long i = 1; i <= 12; i++) {
+                    Order order = orderMap.get(i);
+                    if (order != null) { // Chỉ tạo transaction nếu order tồn tại
+                        Transaction transaction = new Transaction();
+                        transaction.setOrder(order);
+                        transaction.setPayment((i % 2 == 0) ? payAtShop : cod); // Xen kẽ giữa COD và Pay at shop
+                        transaction.setTotal(totals[(int) (i - 1)]); // Gán tổng tiền
 
-                Transaction transaction5 = new Transaction();
-                transaction5.setOrder(order5);
-                transaction5.setPayment(payAtShop);
-                transaction5.setTotal(new BigDecimal("6493.85"));
-                transactionRepository.save(transaction5);
-                transactionRepository.flush();
+                        transactions.add(transaction);
+                    }
+                }
 
-                Transaction transaction6 = new Transaction();
-                transaction6.setOrder(order6);
-                transaction6.setPayment(payAtShop);
-                transaction6.setTotal(new BigDecimal("7250.85"));
-                transactionRepository.save(transaction6);
-                transactionRepository.flush();
-
-                Transaction transaction7 = new Transaction();
-                transaction7.setOrder(order7);
-                transaction7.setPayment(cod);
-                transaction7.setTotal(new BigDecimal("9045.85"));
-                transactionRepository.save(transaction7);
-                transactionRepository.flush();
-
-                Transaction transaction8 = new Transaction();
-                transaction8.setOrder(order8);
-                transaction8.setPayment(cod);
-                transaction8.setTotal(new BigDecimal("9845.85"));
-                transactionRepository.save(transaction8);
-                transactionRepository.flush();
-
-                Transaction transaction9 = new Transaction();
-                transaction9.setOrder(order9);
-                transaction9.setPayment(cod);
-                transaction9.setTotal(new BigDecimal("10952.85"));
-                transactionRepository.save(transaction9);
-                transactionRepository.flush();
-
-                Transaction transaction10 = new Transaction();
-                transaction10.setOrder(order10);
-                transaction10.setPayment(cod);
-                transaction10.setTotal(new BigDecimal("1526.00"));
-                transactionRepository.save(transaction10);
-                transactionRepository.flush();
-
-                Transaction transaction11 = new Transaction();
-                transaction11.setOrder(order11);
-                transaction11.setPayment(payAtShop);
-                transaction11.setTotal(new BigDecimal("2766.00"));
-                transactionRepository.save(transaction11);
-                transactionRepository.flush();
-
-                Transaction transaction12 = new Transaction();
-                transaction12.setOrder(order12);
-                transaction12.setPayment(payAtShop);
-                transaction12.setTotal(new BigDecimal("897.00"));
-                transactionRepository.save(transaction12);
-                transactionRepository.flush();
+                transactionRepository.saveAll(transactions); // Lưu tất cả vào DB một lần
+                transactionRepository.flush(); // Đảm bảo dữ liệu đã được commit
             }
+
             // Insert feedbacks if not present
             if (feedbackRepository.count() == 0) {
                 Feedback feedback1 = new Feedback();
@@ -429,16 +367,16 @@ public class DatabaseInitializer {
             }
             if (orderDetailRepository.count() == 0) {
                 List<Orderdetail> orderDetails = Arrays.asList(
-                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(13L).orElse(null), 2, new BigDecimal("598.00")),
-                        new Orderdetail(productRepository.findById(25L).orElse(null), orderRepository.findById(13L).orElse(null), 3, new BigDecimal("2397.00")),
-                        new Orderdetail(productRepository.findById(41L).orElse(null), orderRepository.findById(14L).orElse(null), 3, new BigDecimal("119.85")),
-                        new Orderdetail(productRepository.findById(16L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("538.00")),
-                        new Orderdetail(productRepository.findById(19L).orElse(null), orderRepository.findById(15L).orElse(null), 3, new BigDecimal("1197.00")),
-                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(15L).orElse(null), 2, new BigDecimal("198.00")),
-                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(16L).orElse(null), 1, new BigDecimal("99.00")),
-                        new Orderdetail(productRepository.findById(8L).orElse(null), orderRepository.findById(17L).orElse(null), 3, new BigDecimal("1347.00")),
-                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(18L).orElse(null), 1, new BigDecimal("299.00")),
-                        new Orderdetail(productRepository.findById(13L).orElse(null), orderRepository.findById(18L).orElse(null), 2, new BigDecimal("458.00")));
+                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(1L).orElse(null), 2, new BigDecimal("598.00")),
+                        new Orderdetail(productRepository.findById(25L).orElse(null), orderRepository.findById(2L).orElse(null), 3, new BigDecimal("2397.00")),
+                        new Orderdetail(productRepository.findById(31L).orElse(null), orderRepository.findById(3L).orElse(null), 3, new BigDecimal("119.85")),
+                        new Orderdetail(productRepository.findById(16L).orElse(null), orderRepository.findById(4L).orElse(null), 2, new BigDecimal("538.00")),
+                        new Orderdetail(productRepository.findById(19L).orElse(null), orderRepository.findById(5L).orElse(null), 3, new BigDecimal("1197.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(6L).orElse(null), 2, new BigDecimal("198.00")),
+                        new Orderdetail(productRepository.findById(15L).orElse(null), orderRepository.findById(7L).orElse(null), 1, new BigDecimal("99.00")),
+                        new Orderdetail(productRepository.findById(8L).orElse(null), orderRepository.findById(8L).orElse(null), 3, new BigDecimal("1347.00")),
+                        new Orderdetail(productRepository.findById(3L).orElse(null), orderRepository.findById(9L).orElse(null), 1, new BigDecimal("299.00")),
+                        new Orderdetail(productRepository.findById(13L).orElse(null), orderRepository.findById(10L).orElse(null), 2, new BigDecimal("458.00")));
                 orderDetailRepository.saveAll(orderDetails);
             }
         } finally {
