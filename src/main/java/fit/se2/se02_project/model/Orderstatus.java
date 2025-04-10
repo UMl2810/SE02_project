@@ -23,7 +23,7 @@ public class Orderstatus {
     public Orderstatus() {
     }
 
-    public Orderstatus(long l, String shipping, String s) {
+    public Orderstatus(long l, String shipping) {
     }
 
     public long getId() {

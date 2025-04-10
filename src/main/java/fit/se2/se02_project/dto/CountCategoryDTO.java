@@ -5,7 +5,7 @@ public class CountCategoryDTO {
     private long id;
     private int total;
 
-    public CountCategoryDTO() {
+    public CountCategoryDTO(String category1, int i) {
     }
 
     public CountCategoryDTO(String categoryName, long id, int total) {

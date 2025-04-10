@@ -5,7 +5,7 @@ public class CountProductDTO {
     private String productName;
     private long productId;
 
-    public CountProductDTO() {
+    public CountProductDTO(String product1, int i) {
     }
 
     public CountProductDTO(int count, String productName, long productId) {

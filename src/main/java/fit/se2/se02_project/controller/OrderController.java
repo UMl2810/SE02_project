@@ -188,7 +188,10 @@ public class OrderController {
                     .findAny()
                     .orElse(null);
 
-            assert order != null;
+            if (order == null) {
+                throw new IllegalArgumentException("Không tìm thấy đơn hàng hợp lệ để huỷ.");
+            }
+
             order.setOrderstatus(orderStatusRepository.findById(4L).orElse(null));
 
             List<Orderdetail> orderDetails = orderDetailRepository.findAll()

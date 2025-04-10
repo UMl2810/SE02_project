@@ -39,7 +39,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(long l, String ceiling, String s, boolean b, String s1, Object o, Object o1, Object o2) {
+    public Category(long l, String ceiling) {
     }
 
     public long getId() {

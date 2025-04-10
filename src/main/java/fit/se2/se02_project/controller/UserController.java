@@ -36,18 +36,19 @@ public class UserController {
 
     @PostMapping("/change")
     public String change(ChangeRequest request, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("success", "Change password successfully");
         try {
             Map<String, String> errorList = new HashMap<>();
+
             if (request.getCurrentPass() == null || request.getNewPass() == null || request.getConfirmNewPass() == null) {
                 errorList.put("Empty", "* Cannot be empty!");
-            }
-            if (!request.getNewPass().equals(request.getConfirmNewPass())) {
+            } else if (!request.getNewPass().equals(request.getConfirmNewPass())) {
                 errorList.put("NotMatch", "* Passwords do not match");
             }
+
             if (!errorList.isEmpty()) {
                 return "redirect:/user/profile?" + buildQueryString(errorList);
             }
+
             User user = commonService.getCurrentUser();
             if (!user.getPassword().equals(commonService.hash(request.getCurrentPass()))) {
                 errorList.put("InvalidPass", "* Your current password is not correct");
@@ -59,11 +60,14 @@ public class UserController {
                 changeUser.setPassword(commonService.hash(request.getNewPass()));
                 userRepository.save(changeUser);
             }
+
+            redirectAttributes.addFlashAttribute("success", "Change password successfully");
             return "redirect:/user/profile?success=Change password successfully";
         } catch (Exception ex) {
             return "redirect:/error?message=" + ex.getMessage();
         }
     }
+
 
     private String buildQueryString(Map<String, String> params) {
         StringBuilder queryString = new StringBuilder();
