@@ -1,6 +1,12 @@
 package fit.se2.se02_project.service;
 
+import fit.se2.se02_project.dto.CategoryDTO;
+import fit.se2.se02_project.dto.FeedbackDTO;
+import fit.se2.se02_project.model.Category;
+import fit.se2.se02_project.model.Feedback;
 import fit.se2.se02_project.model.User;
+import fit.se2.se02_project.repositories.CategoryRepository;
+import fit.se2.se02_project.repositories.FeedbackRepository;
 import fit.se2.se02_project.repositories.RoleRepository;
 import fit.se2.se02_project.repositories.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -23,6 +29,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class CommonService {
@@ -36,12 +43,14 @@ public class CommonService {
     @Value("${spring.mail.username}")
     private String fromMail;
 
+    @Autowired
+    private FeedbackRepository feedbackRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
     @Value("${spring.mail.password}")
     private String fromPassword;
-
     @Value("${app.jwt.secret}")
     private String jwtSecret;
-
     @Autowired
     private HttpServletRequest request;
 
@@ -155,4 +164,33 @@ public class CommonService {
     }
 
 
+    private CategoryDTO toCategoriesDTO(Category category) {
+        return new CategoryDTO(category.getId(), category.getCategoryName(), category.getDescription(),
+                category.getProducts()
+                        .stream()
+                        .map(p -> p.getImage())
+                        .findFirst()
+                        .orElse(null));
+    }
+
+    private FeedbackDTO toFeedbackDTO(Feedback feedback) {
+        return new FeedbackDTO(feedback.getName(), feedback.getComment());
+    }
+
+    public List<FeedbackDTO> getFeaturedFeedbacks() {
+        return feedbackRepository.findAll()
+                .stream()
+                .filter(f -> f.getRate() == 3)
+                .limit(3)
+                .map(this::toFeedbackDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<CategoryDTO> getActiveCategories() {
+        return categoryRepository.findAll()
+                .stream()
+                .filter(c -> c.getIsActive() == 1)
+                .map(this::toCategoriesDTO)
+                .collect(Collectors.toList());
+    }
 }
